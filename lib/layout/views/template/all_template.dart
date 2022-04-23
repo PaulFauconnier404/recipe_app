@@ -7,6 +7,7 @@ export 'package:recipe_app/layout/views/template/general/drawer.dart';
 export 'package:recipe_app/layout/views/template/general/first_app_title.dart';
 export 'package:recipe_app/layout/views/template/general/row_icons_text_drawer.dart';
 export 'package:recipe_app/layout/views/template/general/second_app_title.dart';
+export 'package:recipe_app/layout/views/template/general/top_bar.dart';
 
 export 'package:recipe_app/layout/views/template/recipe/card_view.dart';
 export 'package:recipe_app/layout/views/template/recipe/ingredients_grid.dart';

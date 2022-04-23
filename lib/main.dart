@@ -13,7 +13,9 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(primarySwatch: Colors.orange),
       debugShowCheckedModeBanner: false,
       
-      // home: View_1(),
+      home: Salt_Meal(),
+     
+
      
     );
   }
