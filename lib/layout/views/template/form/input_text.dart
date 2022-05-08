@@ -11,6 +11,24 @@ class Input_Text extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return Container(
+            width: 300,
+            padding: const EdgeInsets.only(top: 30),
+            child: TextField(
+              decoration: InputDecoration(
+                enabledBorder: const UnderlineInputBorder(      
+                  borderSide: BorderSide(color: Color(0xFF909090)),   
+                ),  
+                focusedBorder: const UnderlineInputBorder(
+                  borderSide: BorderSide(color: Color(0xFF202020)),
+                ),
+                labelText: text,
+                labelStyle: const TextStyle(
+                    color: Color(0xFF424242),
+                    fontWeight: FontWeight.w500,
+                )
+              ),
+            ),
+          );
   } 
 }

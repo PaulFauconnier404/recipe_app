@@ -1,17 +1,24 @@
 import 'package:flutter/material.dart';
 // import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:recipe_app/layout/all_layout.dart';
 
 class Card_View extends StatelessWidget {
   final String title;
   final String text;
   final String image;
+  final String time;
+  final String difficulty;
+  final String stars;
   final bool sideP;
 
   Card_View({
     required this.title,
     required this.text,
     required this.image,
+    required this.time,
+    required this.difficulty,
+    required this.stars,
     required this.sideP,
   });
 
@@ -44,7 +51,7 @@ class Card_View extends StatelessWidget {
                 decoration:  BoxDecoration(
                   image: DecorationImage(
                     image: AssetImage(image),
-                    fit: BoxFit.fill,
+                    fit: BoxFit.contain,
                   ),
                 ),
               ),
@@ -76,8 +83,9 @@ class Card_View extends StatelessWidget {
               ),
             ),
             Container(
-              padding: EdgeInsets.fromLTRB(10, 30, 30, 30),
+              padding: EdgeInsets.fromLTRB(10, 20, 30, 10),
               child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
                     title,
@@ -100,7 +108,8 @@ class Card_View extends StatelessWidget {
                         fontSize: 12.0,
                       ),      
                     ),
-                  )
+                  ),
+                  Details_Value_Meal(time: time, difficulty: difficulty, stars: stars)
                 ],
               )
             ),

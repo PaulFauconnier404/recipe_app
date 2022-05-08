@@ -3,6 +3,11 @@ import 'package:flutter/material.dart';
 // import 'package:google_fonts/google_fonts.dart';
 
 class Top_Bar extends StatelessWidget {
+  final GlobalKey<ScaffoldState> scaffoldKey;
+
+    Top_Bar({
+      required this.scaffoldKey,
+    });
 
   @override
   Widget build(BuildContext context) {
@@ -21,59 +26,32 @@ class Top_Bar extends StatelessWidget {
               SizedBox(
                 width: 20,
               ),
-              Container(
-                width: 50.0,
-                height: 50.0,
-                decoration:BoxDecoration(
-                  color: Color(0xFFFFFFFF),
-                  borderRadius: BorderRadius.circular(50.0),
-                  image: DecorationImage(
-                    image: AssetImage('image/icons/user.png'),
-                    fit: BoxFit.contain,
-                  ),
-                )
+              InkWell(
+                onTap: () {
+                  _navigateAndDisplaySelection(context);
+                },
+                child: Container(
+                  width: 50.0,
+                  height: 50.0,
+                  decoration:BoxDecoration(
+                    color: Color(0xFFFFFFFF),
+                    borderRadius: BorderRadius.circular(50.0),
+                    image: DecorationImage(
+                      image: AssetImage('image/icons/user.png'),
+                      fit: BoxFit.contain,
+                    ),
+                  )
+                ),
               ),
-               SizedBox(
+              SizedBox(
                 width: 200,
               ),
-              Column(
-                mainAxisAlignment: MainAxisAlignment.end,
-
-                children: [
-                  Container(
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        color:const Color(0xFF959595),
-                    ),
-                    width: 40,
-                    height: 3,
-                  ),
-                  Container(
-                    height: 7,
-                  ),
-                  Container(
-                    padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
-                    child: Container(
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        color:const Color(0xFF959595),
-                      ),
-                      width: 30,
-                      height: 3,
-                    ),
-                  ),
-                  Container(
-                    height: 7,
-                  ),
-                  Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                      color:const Color(0xFF959595),
-                    ),
-                    width: 40,
-                    height: 3,
-                  )
-                ],
+              
+              Container(
+              child: IconButton(
+                            icon: Icon(Icons.menu),
+                            onPressed: () => scaffoldKey.currentState!.openDrawer()
+                          ),
               ),
               SizedBox(
                 width: 20,
@@ -82,7 +60,19 @@ class Top_Bar extends StatelessWidget {
             ],
           ),
         ]
-      )
-    );
+      ),
+      );
   } 
+
+  _navigateAndDisplaySelection(BuildContext context) async {
+    final choix = await Navigator.pushNamed(
+      context,
+      '/update-account',
+     
+    );
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+      content: Text("$choix"),
+      duration: Duration(seconds: 5),
+    ));
+  }
 }

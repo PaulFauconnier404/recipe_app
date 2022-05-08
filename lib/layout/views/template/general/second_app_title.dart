@@ -3,11 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class Second_App_Title extends StatelessWidget {
-  // final String text;
+  final String text1;
+  final String text2;
 
-  // Second_App_Title({
-  //   required this.text,
-  // });
+  Second_App_Title({
+    required this.text1,
+    required this.text2,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -43,7 +45,7 @@ class Second_App_Title extends StatelessWidget {
                     child: Text.rich(
                       
                       TextSpan(
-                        text: 'Les plats ',
+                        text: text1,
                         style: GoogleFonts.montserrat(
                           color: Color(0xFF404040),
                           decoration: TextDecoration.none,
@@ -52,8 +54,8 @@ class Second_App_Title extends StatelessWidget {
                         ),
                         children: <InlineSpan>[
                           TextSpan(
-                            text: 'salés',
-                            style: TextStyle(fontWeight: FontWeight.w800),
+                            text: text2,
+                            style: TextStyle(fontWeight: FontWeight.w800, fontSize: 12.0),
                           )
                         ]
                       ),

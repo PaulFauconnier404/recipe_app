@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 
 class Login extends StatefulWidget {
   const Login({Key? key}) : super(key: key);
+  static String routeName = '/';
   
   // DATA FINAL (widget.name pour y acc ́eder depuis le State)
   @override
@@ -21,6 +22,29 @@ class _Login_State extends State<Login> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+  final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
+
+    return Scaffold(
+      key: _scaffoldKey,
+      drawer: Drawer_Implement(),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          First_App_Title(),
+          Input_Text(text: "Pseudo"),
+          Input_Text(text: "Mot de passe"),
+          Submit_Button(text: "Connexion"),
+          Annexe_Button(text: "Créer un compte ?", size: 14),
+          Annexe_Button(text: "Mot de passe oublié ?", size: 12),
+
+        ]
+      ),
+
+    );
   }
+
+
+  
+
+
 }
