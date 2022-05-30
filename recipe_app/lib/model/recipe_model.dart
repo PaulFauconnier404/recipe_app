@@ -26,7 +26,7 @@ class User {
         description = json['description'],
         time = json['time'],
         difficulty = json['difficulty'],
-        note = json['note'];
+        note = json['note'],
         ingredients = json['ingredients'];
 
   Map<String, dynamic> toJson() {
@@ -43,13 +43,13 @@ class User {
       };
     } else {
       return {
-        'email': email,
-        'password': password,
+        //'email': email,
+        //'password': password,
       };
     }
   }
 
-  String showUser() {
-    return "$email\n$password\n\n";
-  }
+  //String showUser() {
+  //return "$email\n$password\n\n";
+  //}
 }
