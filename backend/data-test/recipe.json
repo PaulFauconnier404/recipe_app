@@ -17,6 +17,26 @@
          }
       ],
       "ingredients" : ["Chocolat", "Farine", "Levure"]
+   },
+   {
+      "_id": 2,
+      "name": "Gâteau à la fraise",
+      "picture": "/data",
+      "description": "Lorem",
+      "time": "20",
+      "difficulty": "Facile",
+      "note": [
+         {
+            "user" : "1",
+            "note" : "4"
+         },
+         {
+            "user" : "2",
+            "note" : "2"
+         }
+      ],
+      "ingredients" : ["fraise", "Farine", "Levure"]
    }
+   
    
 ]
