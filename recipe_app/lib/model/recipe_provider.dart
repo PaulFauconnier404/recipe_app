@@ -11,20 +11,20 @@ import 'package:recipe_app/model/recipe_model.dart';
 // Lancer le serveur node (attendre le message "connexion ok !")
 // backend> npm start
 
-class UserProvider with ChangeNotifier {
+class RecipeProvider with ChangeNotifier {
   final String host = 'http://localhost:3000';
-  List<User> _users = [];
+  List<Recipe> _recipe = [];
 
-  // Getter pour l'accès en lecture de l'ensemble des profiles
+  // Getter pour l'accès en lecture de l'ensemble des profils
   // Pas de modificiation possible grâce au type UnmodifiableListView
-  UnmodifiableListView<User> get users => UnmodifiableListView(_users);
+  UnmodifiableListView<Recipe> get recipe => UnmodifiableListView(_recipe);
 
   // Récupérer les données dans la base de données
   void fetchData() async {
     try {
-      http.Response response = await http.get(Uri.parse('$host/api/users'));
+      http.Response response = await http.get(Uri.parse('$host/api/recipe'));
       if (response.statusCode == 200) {
-        _users = (json.decode(response.body) as List)
+        _recipe = (json.decode(response.body) as List)
             .map((userJson) => User.fromJson(userJson))
             .toList();
         notifyListeners();
