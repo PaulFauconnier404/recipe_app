@@ -34,7 +34,7 @@ class UserProvider with ChangeNotifier {
     }
   }
 
-  // Ajouter un profile dans la base de données
+  // Ajouter un profil dans la base de données
   Future<void> addUser(User newUser) async {
     try {
       http.Response response = await http.post(
@@ -49,7 +49,6 @@ class UserProvider with ChangeNotifier {
           ),
         );
         notifyListeners();
-
       }
     } catch (e) {
       rethrow;

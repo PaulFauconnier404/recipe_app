@@ -1,4 +1,4 @@
-class User {
+class Recipe {
   String? id;
   String name;
   String picture;
@@ -8,7 +8,7 @@ class User {
   String note;
   String ingredients;
 
-  User({
+  Recipe({
     this.id,
     required this.name,
     required this.picture,
@@ -19,7 +19,7 @@ class User {
     required this.ingredients,
   });
 
-  User.fromJson(Map<String, dynamic> json)
+  Recipe.fromJson(Map<String, dynamic> json)
       : id = json['_id'],
         name = json['name'],
         picture = json['picture'],
@@ -43,7 +43,6 @@ class User {
       };
     } else {
       return {
-        '_id': id,
         'name': name,
         'picture': picture,
         'description': description,
@@ -54,6 +53,4 @@ class User {
       };
     }
   }
-
-  
 }

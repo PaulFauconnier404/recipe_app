@@ -18,5 +18,15 @@
       "email": "romanchichaykin@gmail.com",
       "password": "test",
       "favRecipe": []
+   },
+   {
+      "_id": 3,
+      "name": "Chambet",
+      "firstname": "Anthony",
+      "pseudo": "Anthony1",
+      "picture": "/data",
+      "email": "anthony.chmbt@icloud.com",
+      "password": "test",
+      "favRecipe": []
    }
 ]
