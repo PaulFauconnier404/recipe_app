@@ -1,8 +1,10 @@
 import 'package:recipe_app/layout/all_layout.dart';
+import 'package:recipe_app/model/user_provider.dart';
+import 'package:recipe_app/model/user_model.dart';
 import 'package:flutter/material.dart';
 // import 'package:flutter_svg/flutter_svg.dart';
 // import 'package:google_fonts/google_fonts.dart';
-
+import 'package:provider/provider.dart';
 
 
 class Update_Account extends StatefulWidget {
@@ -20,10 +22,18 @@ class Update_Account extends StatefulWidget {
 
 class _Update_Account_State extends State<Update_Account> {
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
-  
+  final UserProvider userProvider = UserProvider();
+
+  @override
+  void initState() {
+    super.initState();
+    userProvider.fetchData();
+  }
+
 
   @override
   Widget build(BuildContext context) {
+    // List<User> profiles = Provider.of<UserProvider>(context).profiles;
     return Scaffold(
           key: _scaffoldKey,
           drawer: Drawer_Implement(),

@@ -43,13 +43,17 @@ class User {
       };
     } else {
       return {
-        //'email': email,
-        //'password': password,
+        '_id': id,
+        'name': name,
+        'picture': picture,
+        'description': description,
+        'time': time,
+        'difficulty': difficulty,
+        'note': note,
+        'ingredients': ingredients,
       };
     }
   }
 
-  //String showUser() {
-  //return "$email\n$password\n\n";
-  //}
+  
 }
