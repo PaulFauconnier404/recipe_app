@@ -22,10 +22,10 @@ class RecipeProvider with ChangeNotifier {
   // Récupérer les données dans la base de données
   void fetchData() async {
     try {
-      http.Response response = await http.get(Uri.parse('$host/api/recipe'));
+      http.Response response = await http.get(Uri.parse('$host/api/recipes'));
       if (response.statusCode == 200) {
         _recipe = (json.decode(response.body) as List)
-            .map((userJson) => User.fromJson(userJson))
+            .map((recipeJson) => Recipe.fromJson(recipeJson))
             .toList();
         notifyListeners();
       }
@@ -35,39 +35,20 @@ class RecipeProvider with ChangeNotifier {
   }
 
   // Ajouter un profil dans la base de données
-  Future<void> addUser(User newUser) async {
+  Future<void> addRecipe(Recipe newRecipe) async {
     try {
       http.Response response = await http.post(
-        Uri.parse('$host/api/users'),
-        body: json.encode(newUser.toJson()),
+        Uri.parse('$host/api/recipes'),
+        body: json.encode(newRecipe.toJson()),
         headers: {'Content-type': 'application/json'},
       );
       if (response.statusCode == 200) {
-        _users.add(
-          User.fromJson(
+        _recipe.add(
+          Recipe.fromJson(
             json.decode(response.body),
           ),
         );
         notifyListeners();
-      }
-    } catch (e) {
-      rethrow;
-    }
-  }
-
-  Future<String> logUser(User user) async {
-    try {
-      http.Response response = await http.post(
-        Uri.parse('$host/api/users/login'),
-        body: json.encode(user.toJson()),
-        headers: {'Content-type': 'application/json'},
-      );
-      Map<String, dynamic> temp = json.decode(response.body);
-
-      if (response.statusCode == 200) {
-        return ("200");
-      } else {
-        return (temp['error']);
       }
     } catch (e) {
       rethrow;

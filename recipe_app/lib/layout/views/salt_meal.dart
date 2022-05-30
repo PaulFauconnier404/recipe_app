@@ -84,7 +84,7 @@ class _Salt_Meal_State extends State<Salt_Meal> {
             Second_App_Title(text1: "Les plats ", text2: "salés"),
             Container(
               padding: const EdgeInsets.fromLTRB(30, 70, 20, 30),
-              height: 900,
+              height: 800,
               child: ListView.builder(
                 itemBuilder: (context, i) {
                   return Card_View(
