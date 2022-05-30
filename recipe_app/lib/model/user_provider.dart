@@ -49,7 +49,6 @@ class UserProvider with ChangeNotifier {
           ),
         );
         notifyListeners();
-
       }
     } catch (e) {
       rethrow;
