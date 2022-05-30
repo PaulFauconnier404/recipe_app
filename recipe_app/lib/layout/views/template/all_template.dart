@@ -4,7 +4,7 @@ export 'package:recipe_app/layout/views/template/form/input_text.dart';
 export 'package:recipe_app/layout/views/template/form/submit_button.dart';
 export 'package:recipe_app/layout/views/template/form/submit_data.dart';
 
-export 'package:recipe_app/layout/views/template/form/create_user.dart';
+
 
 export 'package:recipe_app/layout/views/template/general/drawer_implement.dart';
 export 'package:recipe_app/layout/views/template/general/first_app_title.dart';

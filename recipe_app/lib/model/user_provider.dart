@@ -5,7 +5,7 @@ import 'package:http/http.dart' as http;
 import 'dart:collection'; // nouveaux type de listes comme UnmodifiableListView
 import 'dart:convert'; // pour decoder la réponse http
 
-import 'user_model.dart';
+import 'package:recipe_app/model/user_model.dart';
 
 // Commandes utiles :
 // Lancer le serveur node (attendre le message "connexion ok !")
@@ -49,6 +49,7 @@ class UserProvider with ChangeNotifier {
           ),
         );
         notifyListeners();
+
       }
     } catch (e) {
       rethrow;

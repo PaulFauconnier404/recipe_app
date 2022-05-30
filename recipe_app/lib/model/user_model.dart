@@ -6,7 +6,7 @@ class User {
   String picture;
   String email;
   String password;
-  String favRecipe;
+  List favRecipe;
 
   User({
     this.id,
@@ -45,7 +45,6 @@ class User {
       return {
         'email': email,
         'password': password,
-        'favRecipe': favRecipe,
       };
     }
   }
