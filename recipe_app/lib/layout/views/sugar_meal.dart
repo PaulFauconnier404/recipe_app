@@ -1,5 +1,7 @@
 import 'package:recipe_app/layout/all_layout.dart';
 import 'package:flutter/material.dart';
+import 'package:recipe_app/model/recipe_provider.dart';
+import 'package:provider/provider.dart';
 // import 'package:flutter_svg/flutter_svg.dart';
 // import 'package:google_fonts/google_fonts.dart';
 
