@@ -26,7 +26,7 @@ class User {
         pseudo = json['pseudo'],
         picture = json['picture'],
         email = json['email'],
-        password = json['password'];
+        password = json['password'],
         favRecipe = json['favRecipe'];
 
   Map<String, dynamic> toJson() {
