@@ -77,7 +77,7 @@ class _Update_Account_State extends State<Update_Account> {
     
     Provider.of<UserProvider>(context).selectByEmail(userData.email);
     List<User> users = Provider.of<UserProvider>(context).users;
-print(newUser.name);
+
     return Scaffold(  
           
           body: Container(

@@ -3,6 +3,10 @@ import 'package:flutter/material.dart';
 // import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import 'package:recipe_app/model/recipe_provider.dart';
+import 'package:recipe_app/model/recipe_model.dart';
+import 'package:provider/provider.dart';
+
 class Salt_Meal extends StatefulWidget {
   static String routeName = '/salt-meal';
 
@@ -18,59 +22,16 @@ class Salt_Meal extends StatefulWidget {
 class _Salt_Meal_State extends State<Salt_Meal> {
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
 
-  List cards = [
-    {
-      'title': 'Pizza aux champignons',
-      'text':
-          'Le lorem ipsum est, en imprimerie, une suite de mots sans signification utilisée à titre provisoire pour calibrer une mise',
-      'image': 'image/recipe/pizza.png',
-      'time': '10min',
-      'difficulty': 'Facile',
-      'stars': '4,5/5',
-      'side': true
-    },
-    {
-      'title': 'Pizza aux champignons',
-      'text':
-          'Le lorem ipsum est, en imprimerie, une suite de mots sans signification utilisée à titre provisoire pour calibrer une mise',
-      'image': 'image/recipe/pizza.png',
-      'time': '10min',
-      'difficulty': 'Facile',
-      'stars': '4,5/5',
-      'side': false
-    },
-    {
-      'title': 'Pizza aux champignons',
-      'text':
-          'Le lorem ipsum est, en imprimerie, une suite de mots sans signification utilisée à titre provisoire pour calibrer une mise',
-      'image': 'image/recipe/pizza.png',
-      'time': '10min',
-      'difficulty': 'Facile',
-      'stars': '4,5/5',
-      'side': true
-    },
-    {
-      'title': 'Pizza aux champignons',
-      'text':
-          'Le lorem ipsum est, en imprimerie, une suite de mots sans signification utilisée à titre provisoire pour calibrer une mise',
-      'image': 'image/recipe/pizza.png',
-      'time': '10min',
-      'difficulty': 'Facile',
-      'stars': '4,5/5',
-      'side': false
-    },
-  ];
 
-  void press(card) {
-    int index = cards.indexOf(card);
-    setState(() {
-      cards[index]['press'] = !cards[index]['press'];
-    });
-  }
+
   @override
   Widget build(BuildContext context) {
     final LoginData userData = ModalRoute.of(context)!.settings.arguments as LoginData;
 
+    Provider.of<RecipeProvider>(context).fetchData();
+    List<Recipe> recipes = Provider.of<RecipeProvider>(context).recipes;
+
+print(recipes[0].name);
     return Scaffold(
       key: _scaffoldKey,
       drawer: Drawer_Implement(),
@@ -90,15 +51,16 @@ class _Salt_Meal_State extends State<Salt_Meal> {
               child: ListView.builder(
                 itemBuilder: (context, i) {
                   return Card_View(
-                      title: cards[i]['title'],
-                      text: cards[i]['text'],
-                      image: cards[i]['image'],
-                      time: cards[i]['time'],
-                      difficulty: cards[i]['difficulty'],
-                      stars: cards[i]['stars'],
-                      sideP: cards[i]['side']);
+                      id: recipes[i].id as String,
+                      title: recipes[i].name as String,
+                      text: recipes[i].description as String,
+                      image: recipes[i].picture as String,
+                      time: recipes[i].time as String,
+                      difficulty: recipes[i].difficulty as String,
+                      stars: recipes[i].note[0] as String,
+                      sideP: false as bool);
                 },
-                itemCount: cards.length,
+                itemCount: recipes.length,
               ),
             ),
           ],

@@ -22,19 +22,7 @@ class Sugar_Meal extends StatefulWidget {
 class _Sugar_Meal_State extends State<Sugar_Meal> {
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
   
-  List cards = [
-      {'title': 'Gâteau au chocolat', 'text': 'Le lorem ipsum est, en imprimerie, une suite de mots sans signification utilisée à titre provisoire pour calibrer une mise', 'image': 'image/recipe/cake.png', 'time':'10min', 'difficulty': 'Facile', 'stars': '4,5/5', 'side' : true},
-      {'title': 'Gâteau au chocolat', 'text': 'Le lorem ipsum est, en imprimerie, une suite de mots sans signification utilisée à titre provisoire pour calibrer une mise', 'image': 'image/recipe/cake.png', 'time':'10min', 'difficulty': 'Facile', 'stars': '4,5/5', 'side' : false},
-      {'title': 'Gâteau au chocolat', 'text': 'Le lorem ipsum est, en imprimerie, une suite de mots sans signification utilisée à titre provisoire pour calibrer une mise', 'image': 'image/recipe/cake.png', 'time':'10min', 'difficulty': 'Facile', 'stars': '4,5/5', 'side' : true},
-      {'title': 'Gâteau au chocolat', 'text': 'Le lorem ipsum est, en imprimerie, une suite de mots sans signification utilisée à titre provisoire pour calibrer une mise', 'image': 'image/recipe/cake.png', 'time':'10min', 'difficulty': 'Facile', 'stars': '4,5/5','side' : false},
-  ];
-
-  void press(card) {
-    int index = cards.indexOf(card);
-    setState(() {
-      cards[index]['press'] = !cards[index]['press'];
-    });
-  }
+  
 
 
   @override
@@ -57,23 +45,23 @@ class _Sugar_Meal_State extends State<Sugar_Meal> {
                 padding: const EdgeInsets.fromLTRB(30, 70, 20, 30),
                 height:900,
 
-                child:  ListView.builder(
+              //   child:  ListView.builder(
                   
 
-                itemBuilder: (context, i) {
-                    return Card_View(
-                      title: cards[i]['title'],
-                      text: cards[i]['text'],
-                      image: cards[i]['image'],
-                      time: cards[i]['time'],
-                      difficulty: cards[i]['difficulty'],
-                      stars: cards[i]['stars'],
-                      sideP: cards[i]['side']
-                    ); 
-                  },
-                itemCount: cards.length,  
+              //   itemBuilder: (context, i) {
+              //       return Card_View(
+              //         title: cards[i]['title'],
+              //         text: cards[i]['text'],
+              //         image: cards[i]['image'],
+              //         time: cards[i]['time'],
+              //         difficulty: cards[i]['difficulty'],
+              //         stars: cards[i]['stars'],
+              //         sideP: cards[i]['side']
+              //       ); 
+              //     },
+              //   itemCount: cards.length,  
                 
-              ),
+              // ),
               
               ),
             ],

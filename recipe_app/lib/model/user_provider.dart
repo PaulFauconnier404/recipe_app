@@ -40,7 +40,6 @@ class UserProvider with ChangeNotifier {
     try {
       http.Response response = await http.get(Uri.parse('$host/api/users/'+email));
       if (response.statusCode == 200) {
-        
         Map<String, dynamic> map = jsonDecode(response.body);
         User user = User.fromJson(map);
         _users.add(user);
@@ -60,9 +59,7 @@ class UserProvider with ChangeNotifier {
         body: json.encode(newUser.toJson()),
         headers: {'Content-type': 'application/json'},
       );
-        print(json.encode(newUser.toJson()));
-        print(response.body);
-
+   
       if (response.statusCode == 200) {
         print('good');
 
