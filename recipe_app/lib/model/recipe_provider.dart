@@ -14,18 +14,18 @@ import 'package:recipe_app/layout/views/sugar_meal.dart';
 
 class RecipeProvider with ChangeNotifier {
   final String host = 'http://localhost:3000';
-  List<Recipe> _recipe = [];
+  List<Recipe> _recipes = [];
 
   // Getter pour l'accès en lecture de l'ensemble des profiles
   // Pas de modificiation possible grâce au type UnmodifiableListView
-  UnmodifiableListView<Recipe> get recipe => UnmodifiableListView(_recipe);
+  UnmodifiableListView<Recipe> get recipes => UnmodifiableListView(_recipes);
 
   // Récupérer les données dans la base de données
   void fetchData() async {
     try {
       http.Response response = await http.get(Uri.parse('$host/api/recipes'));
       if (response.statusCode == 200) {
-        _recipe = (json.decode(response.body) as List)
+        _recipes = (json.decode(response.body) as List)
             .map((recipeJson) => Recipe.fromJson(recipeJson))
             .toList();
         notifyListeners();
@@ -44,7 +44,7 @@ class RecipeProvider with ChangeNotifier {
         headers: {'Content-type': 'application/json'},
       );
       if (response.statusCode == 200) {
-        _recipe.add(
+        _recipes.add(
           Recipe.fromJson(
             json.decode(response.body),
           ),

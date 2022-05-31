@@ -27,7 +27,7 @@ class _Favorites_State extends State<Favorites> {
   Widget build(BuildContext context) {
     final GlobalKey<ScaffoldState> _scaffoldKey =
         new GlobalKey<ScaffoldState>();
-    List<Recipe> recipes = Provider.of<RecipeProvider>(context).recipe;
+    List<Recipe> recipes = Provider.of<RecipeProvider>(context).recipes;
 
     return Scaffold(
       key: _scaffoldKey,

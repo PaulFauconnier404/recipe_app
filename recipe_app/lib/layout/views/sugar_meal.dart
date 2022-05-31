@@ -31,7 +31,7 @@ class _Sugar_Meal_State extends State<Sugar_Meal> {
 
   @override
   Widget build(BuildContext context) {
-    List<Recipe> recipes = Provider.of<RecipeProvider>(context).recipe;
+    List<Recipe> recipes = Provider.of<RecipeProvider>(context).recipes;
     return Scaffold(
       key: _scaffoldKey,
       drawer: Drawer_Implement(),
