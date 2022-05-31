@@ -1,11 +1,11 @@
 const express = require('express');
 
 const router = express.Router();
-const userCtrl = require('../controllers/recipe');
+const recipeCtrl = require('../controllers/recipe');
 
 // Routes
-router.get('/', userCtrl.getAllRecipe);
-router.get('/:id', userCtrl.getOneRecipe);
+router.get('/', recipeCtrl.getAllRecipe);
+router.get('/:id', recipeCtrl.getOneRecipe);
 
 
 module.exports = router;

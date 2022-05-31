@@ -12,7 +12,6 @@ class Top_View_Dev_Recipe extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Stack(
-      clipBehavior: Clip.none,
       children: [
         Positioned(
           left: 0.0,

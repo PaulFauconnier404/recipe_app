@@ -1,5 +1,8 @@
 import 'package:recipe_app/layout/all_layout.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:recipe_app/model/recipe_model.dart';
+import 'package:recipe_app/model/recipe_provider.dart';
 // import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -10,66 +13,21 @@ class Salt_Meal extends StatefulWidget {
 
   // DATA FINAL (widget.name pour y acc ́eder depuis le State)
   @override
-  _Salt_Meal_State createState() {
-    return _Salt_Meal_State();
-  }
+  _Salt_Meal_State createState() => _Salt_Meal_State();
 }
 
 class _Salt_Meal_State extends State<Salt_Meal> {
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
 
-  List cards = [
-    {
-      'title': 'Pizza aux champignons',
-      'text':
-          'Le lorem ipsum est, en imprimerie, une suite de mots sans signification utilisée à titre provisoire pour calibrer une mise',
-      'image': 'image/recipe/pizza.png',
-      'time': '10min',
-      'difficulty': 'Facile',
-      'stars': '4,5/5',
-      'side': true
-    },
-    {
-      'title': 'Pizza aux champignons',
-      'text':
-          'Le lorem ipsum est, en imprimerie, une suite de mots sans signification utilisée à titre provisoire pour calibrer une mise',
-      'image': 'image/recipe/pizza.png',
-      'time': '10min',
-      'difficulty': 'Facile',
-      'stars': '4,5/5',
-      'side': false
-    },
-    {
-      'title': 'Pizza aux champignons',
-      'text':
-          'Le lorem ipsum est, en imprimerie, une suite de mots sans signification utilisée à titre provisoire pour calibrer une mise',
-      'image': 'image/recipe/pizza.png',
-      'time': '10min',
-      'difficulty': 'Facile',
-      'stars': '4,5/5',
-      'side': true
-    },
-    {
-      'title': 'Pizza aux champignons',
-      'text':
-          'Le lorem ipsum est, en imprimerie, une suite de mots sans signification utilisée à titre provisoire pour calibrer une mise',
-      'image': 'image/recipe/pizza.png',
-      'time': '10min',
-      'difficulty': 'Facile',
-      'stars': '4,5/5',
-      'side': false
-    },
-  ];
-
-  void press(card) {
-    int index = cards.indexOf(card);
-    setState(() {
-      cards[index]['press'] = !cards[index]['press'];
-    });
+  @override
+  void initState() {
+    super.initState();
+    RecipeProvider().fetchData();
   }
 
   @override
   Widget build(BuildContext context) {
+    List<Recipe> recipes = Provider.of<RecipeProvider>(context).recipes;
     return Scaffold(
       key: _scaffoldKey,
       drawer: Drawer_Implement(),
@@ -88,15 +46,16 @@ class _Salt_Meal_State extends State<Salt_Meal> {
               child: ListView.builder(
                 itemBuilder: (context, i) {
                   return Card_View(
-                      title: cards[i]['title'],
-                      text: cards[i]['text'],
-                      image: cards[i]['image'],
-                      time: cards[i]['time'],
-                      difficulty: cards[i]['difficulty'],
-                      stars: cards[i]['stars'],
-                      sideP: cards[i]['side']);
+                      id: recipes[i].id,
+                      title: recipes[i].name,
+                      text: recipes[i].description,
+                      image: recipes[i].picture,
+                      time: recipes[i].time,
+                      difficulty: recipes[i].difficulty,
+                      stars: recipes[i].note[0],
+                      sideP: false);
                 },
-                itemCount: cards.length,
+                itemCount: recipes.length,
               ),
             ),
           ],

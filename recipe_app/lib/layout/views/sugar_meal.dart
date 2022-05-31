@@ -1,7 +1,10 @@
 import 'package:recipe_app/layout/all_layout.dart';
 import 'package:flutter/material.dart';
-import 'package:recipe_app/model/recipe_provider.dart';
 import 'package:provider/provider.dart';
+import 'package:recipe_app/model/recipe_model.dart';
+import 'package:recipe_app/model/recipe_provider.dart';
+
+//import 'package:http/http.dart' as http;
 // import 'package:flutter_svg/flutter_svg.dart';
 // import 'package:google_fonts/google_fonts.dart';
 
@@ -12,94 +15,53 @@ class Sugar_Meal extends StatefulWidget {
 
   // DATA FINAL (widget.name pour y acc ́eder depuis le State)
   @override
-  _Sugar_Meal_State createState() {
-    return _Sugar_Meal_State();
-  }
+  _Sugar_Meal_State createState() => _Sugar_Meal_State();
 }
 
+///
+
+///
 class _Sugar_Meal_State extends State<Sugar_Meal> {
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
 
-  List cards = [
-    {
-      'title': 'Gâteau au chocolat',
-      'text':
-          'Le lorem ipsum est, en imprimerie, une suite de mots sans signification utilisée à titre provisoire pour calibrer une mise',
-      'image': 'image/recipe/cake.png',
-      'time': '10min',
-      'difficulty': 'Facile',
-      'stars': '4,5/5',
-      'side': true
-    },
-    {
-      'title': 'Gâteau au chocolat',
-      'text':
-          'Le lorem ipsum est, en imprimerie, une suite de mots sans signification utilisée à titre provisoire pour calibrer une mise',
-      'image': 'image/recipe/cake.png',
-      'time': '10min',
-      'difficulty': 'Facile',
-      'stars': '4,5/5',
-      'side': false
-    },
-    {
-      'title': 'Gâteau au chocolat',
-      'text':
-          'Le lorem ipsum est, en imprimerie, une suite de mots sans signification utilisée à titre provisoire pour calibrer une mise',
-      'image': 'image/recipe/cake.png',
-      'time': '10min',
-      'difficulty': 'Facile',
-      'stars': '4,5/5',
-      'side': true
-    },
-    {
-      'title': 'Gâteau au chocolat',
-      'text':
-          'Le lorem ipsum est, en imprimerie, une suite de mots sans signification utilisée à titre provisoire pour calibrer une mise',
-      'image': 'image/recipe/cake.png',
-      'time': '10min',
-      'difficulty': 'Facile',
-      'stars': '4,5/5',
-      'side': false
-    },
-  ];
-
-  void press(card) {
-    int index = cards.indexOf(card);
-    setState(() {
-      cards[index]['press'] = !cards[index]['press'];
-    });
+  @override
+  void initState() {
+    super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
+    Provider.of<RecipeProvider>(context).fetchData();
+    List<Recipe> recipes = Provider.of<RecipeProvider>(context).recipes;
+
     return Scaffold(
       key: _scaffoldKey,
       drawer: Drawer_Implement(),
       body: Container(
-        // ignore: prefer_const_constructors
         decoration: BoxDecoration(
           color: const Color(0xFFF5F5F5),
         ),
         child: Column(
           children: [
             Top_Bar(scaffoldKey: _scaffoldKey),
-            Second_App_Title(text1: "Les plats ", text2: "sucrés"),
+            Second_App_Title(text1: recipes[0].description, text2: "sucrés"),
             Container(
               padding: const EdgeInsets.fromLTRB(30, 70, 20, 30),
-              height: 600,
-              child: ListView.builder(
-                itemBuilder: (context, i) {
-                  return Card_View(
-                      title: cards[i]['title'],
-                      text: cards[i]['text'],
-                      image: cards[i]['image'],
-                      time: cards[i]['time'],
-                      difficulty: cards[i]['difficulty'],
-                      stars: cards[i]['stars'],
-                      sideP: cards[i]['side']);
-                },
-                itemCount: cards.length,
-              ),
+              height: 560,
+              // child: ListView.builder(
+              //   itemBuilder: (context, i) {
+              //     return Card_View(
+              //         id: recipes[i].id,
+              //         title: recipes[i].name,
+              //         text: recipes[i].description,
+              //         image: recipes[i].picture,
+              //         time: recipes[i].time,
+              //         difficulty: recipes[i].difficulty,
+              //         stars: recipes[i].note[0],
+              //         sideP: true);
+              //   },
+              //   itemCount: recipes.length,
+              // ),
             ),
           ],
         ),

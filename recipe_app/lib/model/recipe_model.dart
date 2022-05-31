@@ -5,11 +5,11 @@ class Recipe {
   String description;
   String time;
   String difficulty;
-  String note;
-  String ingredients;
+  List<dynamic> note;
+  List<dynamic> ingredients;
 
   Recipe({
-    this.id,
+    required this.id,
     required this.name,
     required this.picture,
     required this.description,

@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:recipe_app/layout/all_layout.dart';
 
 class Card_View extends StatelessWidget {
+  final String? id;
   final String title;
   final String text;
   final String image;
@@ -13,6 +14,7 @@ class Card_View extends StatelessWidget {
   final bool sideP;
 
   Card_View({
+    required this.id,
     required this.title,
     required this.text,
     required this.image,
