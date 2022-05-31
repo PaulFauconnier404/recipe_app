@@ -1,7 +1,7 @@
 [
    {
       "_id": 1,
-      "name": "Gâteau au chocolat",
+      "name": "Gâteau au test",
       "picture": "/data",
       "description": "Lorem",
       "time": "20",

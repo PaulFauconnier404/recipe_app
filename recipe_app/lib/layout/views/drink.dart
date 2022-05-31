@@ -1,5 +1,8 @@
 import 'package:recipe_app/layout/all_layout.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:recipe_app/model/recipe_model.dart';
+import 'package:recipe_app/model/recipe_provider.dart';
 // import 'package:flutter_svg/flutter_svg.dart';
 // import 'package:google_fonts/google_fonts.dart';
 
@@ -10,67 +13,21 @@ class Drink extends StatefulWidget {
 
   // DATA FINAL (widget.name pour y acc ́eder depuis le State)
   @override
-  _Drink_State createState() {
-    return _Drink_State();
-  }
+  _Drink_State createState() => _Drink_State();
 }
 
 class _Drink_State extends State<Drink> {
-  List cards = [
-    {
-      'title': 'Milkshake à la fraise',
-      'text':
-          'Le lorem ipsum est, en imprimerie, une suite de mots sans signification utilisée à titre provisoire pour calibrer une mise',
-      'image': 'image/recipe/milkshake.png',
-      'time': '10min',
-      'difficulty': 'Facile',
-      'stars': '4,5/5',
-      'side': true
-    },
-    {
-      'title': 'Milkshake à la fraise',
-      'text':
-          'Le lorem ipsum est, en imprimerie, une suite de mots sans signification utilisée à titre provisoire pour calibrer une mise',
-      'image': 'image/recipe/milkshake.png',
-      'time': '10min',
-      'difficulty': 'Facile',
-      'stars': '4,5/5',
-      'side': false
-    },
-    {
-      'title': 'Milkshake à la fraise',
-      'text':
-          'Le lorem ipsum est, en imprimerie, une suite de mots sans signification utilisée à titre provisoire pour calibrer une mise',
-      'image': 'image/recipe/milkshake.png',
-      'time': '10min',
-      'difficulty': 'Facile',
-      'stars': '4,5/5',
-      'side': true
-    },
-    {
-      'title': 'Milkshake à la fraise',
-      'text':
-          'Le lorem ipsum est, en imprimerie, une suite de mots sans signification utilisée à titre provisoire pour calibrer une mise',
-      'image': 'image/recipe/milkshake.png',
-      'time': '10min',
-      'difficulty': 'Facile',
-      'stars': '4,5/5',
-      'side': false
-    },
-  ];
-
-  void press(card) {
-    int index = cards.indexOf(card);
-    setState(() {
-      cards[index]['press'] = !cards[index]['press'];
-    });
+  @override
+  void initState() {
+    super.initState();
+    RecipeProvider().fetchData();
   }
 
   @override
   Widget build(BuildContext context) {
     final GlobalKey<ScaffoldState> _scaffoldKey =
         new GlobalKey<ScaffoldState>();
-
+    List<Recipe> recipes = Provider.of<RecipeProvider>(context).recipe;
     return Scaffold(
       key: _scaffoldKey,
       drawer: Drawer_Implement(),
@@ -80,7 +37,7 @@ class _Drink_State extends State<Drink> {
         ),
         child: Column(
           children: [
-            Top_Bar(scaffoldKey : _scaffoldKey),
+            Top_Bar(scaffoldKey: _scaffoldKey),
             Second_App_Title(text1: "Les ", text2: "boissons"),
             Container(
               padding: const EdgeInsets.fromLTRB(30, 70, 20, 30),
@@ -88,15 +45,16 @@ class _Drink_State extends State<Drink> {
               child: ListView.builder(
                 itemBuilder: (context, i) {
                   return Card_View(
-                      title: cards[i]['title'],
-                      text: cards[i]['text'],
-                      image: cards[i]['image'],
-                      time: cards[i]['time'],
-                      difficulty: cards[i]['difficulty'],
-                      stars: cards[i]['stars'],
-                      sideP: cards[i]['side']);
+                      id: recipes[i].id,
+                      title: recipes[i].name,
+                      text: recipes[i].description,
+                      image: recipes[i].picture,
+                      time: recipes[i].time,
+                      difficulty: recipes[i].difficulty,
+                      stars: recipes[i].note,
+                      sideP: false);
                 },
-                itemCount: cards.length,
+                itemCount: recipes.length,
               ),
             ),
           ],

@@ -6,6 +6,7 @@ import 'dart:collection'; // nouveaux type de listes comme UnmodifiableListView
 import 'dart:convert'; // pour decoder la réponse http
 
 import 'package:recipe_app/model/recipe_model.dart';
+import 'package:recipe_app/layout/views/sugar_meal.dart';
 
 // Commandes utiles :
 // Lancer le serveur node (attendre le message "connexion ok !")
