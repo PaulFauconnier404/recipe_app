@@ -52,7 +52,7 @@ class _Salt_Meal_State extends State<Salt_Meal> {
                       image: recipes[i].picture,
                       time: recipes[i].time,
                       difficulty: recipes[i].difficulty,
-                      stars: recipes[i].note,
+                      stars: recipes[i].note[0],
                       sideP: false);
                 },
                 itemCount: recipes.length,

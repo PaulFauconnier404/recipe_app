@@ -5,8 +5,8 @@ class Recipe {
   String description;
   String time;
   String difficulty;
-  String note;
-  String ingredients;
+  List<dynamic> note;
+  List<dynamic> ingredients;
 
   Recipe({
     required this.id,

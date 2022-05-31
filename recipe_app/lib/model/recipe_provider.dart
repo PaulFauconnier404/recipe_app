@@ -6,7 +6,7 @@ import 'dart:collection'; // nouveaux type de listes comme UnmodifiableListView
 import 'dart:convert'; // pour decoder la réponse http
 
 import 'package:recipe_app/model/recipe_model.dart';
-import 'package:recipe_app/layout/views/sugar_meal.dart';
+import 'package:recipe_app/layout/views/sugar_meal.dart' as data;
 
 // Commandes utiles :
 // Lancer le serveur node (attendre le message "connexion ok !")
@@ -15,6 +15,7 @@ import 'package:recipe_app/layout/views/sugar_meal.dart';
 class RecipeProvider with ChangeNotifier {
   final String host = 'http://localhost:3000';
   List<Recipe> _recipes = [];
+  //List<Recipe> _recipes =new List<Recipe>();
 
   // Getter pour l'accès en lecture de l'ensemble des profiles
   // Pas de modificiation possible grâce au type UnmodifiableListView
