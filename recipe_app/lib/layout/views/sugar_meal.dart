@@ -6,7 +6,7 @@ import 'package:recipe_app/model/recipe_provider.dart';
 
 //import 'package:http/http.dart' as http;
 // import 'package:flutter_svg/flutter_svg.dart';
-// import 'package:google_fonts/google_fonts.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class Sugar_Meal extends StatefulWidget {
   static String routeName = '/sugar-meal';
@@ -27,6 +27,7 @@ class _Sugar_Meal_State extends State<Sugar_Meal> {
   @override
   void initState() {
     super.initState();
+    RecipeProvider().fetchData();
   }
 
   @override
@@ -38,8 +39,8 @@ class _Sugar_Meal_State extends State<Sugar_Meal> {
       key: _scaffoldKey,
       drawer: Drawer_Implement(),
       body: Container(
-        decoration: BoxDecoration(
-          color: const Color(0xFFF5F5F5),
+        decoration: const BoxDecoration(
+          color: Color(0xFFF5F5F5),
         ),
         child: Column(
           children: [
@@ -48,20 +49,20 @@ class _Sugar_Meal_State extends State<Sugar_Meal> {
             Container(
               padding: const EdgeInsets.fromLTRB(30, 70, 20, 30),
               height: 560,
-              // child: ListView.builder(
-              //   itemBuilder: (context, i) {
-              //     return Card_View(
-              //         id: recipes[i].id,
-              //         title: recipes[i].name,
-              //         text: recipes[i].description,
-              //         image: recipes[i].picture,
-              //         time: recipes[i].time,
-              //         difficulty: recipes[i].difficulty,
-              //         stars: recipes[i].note[0],
-              //         sideP: true);
-              //   },
-              //   itemCount: recipes.length,
-              // ),
+              child: ListView.builder(
+                itemBuilder: (context, i) {
+                  return Card_View(
+                      id: recipes[i].id,
+                      title: recipes[i].name,
+                      text: recipes[i].description,
+                      image: recipes[i].picture,
+                      time: recipes[i].time,
+                      difficulty: recipes[i].difficulty,
+                      stars: recipes[i].note[0],
+                      sideP: true);
+                },
+                itemCount: recipes.length,
+              ),
             ),
           ],
         ),

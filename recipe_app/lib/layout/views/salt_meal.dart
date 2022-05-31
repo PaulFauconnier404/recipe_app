@@ -28,12 +28,13 @@ class _Salt_Meal_State extends State<Salt_Meal> {
   @override
   Widget build(BuildContext context) {
     List<Recipe> recipes = Provider.of<RecipeProvider>(context).recipes;
+
     return Scaffold(
       key: _scaffoldKey,
       drawer: Drawer_Implement(),
       body: Container(
-        decoration: BoxDecoration(
-          color: const Color(0xFFF5F5F5),
+        decoration: const BoxDecoration(
+          color: Color(0xFFF5F5F5),
         ),
         // ListView.separated : Construction des widgets visibles + s ́eparateur
         child: Column(
@@ -42,7 +43,7 @@ class _Salt_Meal_State extends State<Salt_Meal> {
             Second_App_Title(text1: "Les plats ", text2: "salés"),
             Container(
               padding: const EdgeInsets.fromLTRB(30, 70, 20, 30),
-              height: 800,
+              height: 500,
               child: ListView.builder(
                 itemBuilder: (context, i) {
                   return Card_View(
