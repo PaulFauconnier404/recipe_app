@@ -1,6 +1,4 @@
 export 'package:recipe_app/layout/views/template/form/annexe_button.dart';
-export 'package:recipe_app/layout/views/template/form/input_file.dart';
-export 'package:recipe_app/layout/views/template/form/input_text.dart';
 export 'package:recipe_app/layout/views/template/form/submit_button.dart';
 export 'package:recipe_app/layout/views/template/form/submit_data.dart';
 

@@ -68,8 +68,8 @@ class _Drink_State extends State<Drink> {
 
   @override
   Widget build(BuildContext context) {
-    final GlobalKey<ScaffoldState> _scaffoldKey =
-        new GlobalKey<ScaffoldState>();
+    final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
+    final DrinkData userData = ModalRoute.of(context)!.settings.arguments as DrinkData;
 
     return Scaffold(
       key: _scaffoldKey,
@@ -80,7 +80,7 @@ class _Drink_State extends State<Drink> {
         ),
         child: Column(
           children: [
-            Top_Bar(scaffoldKey : _scaffoldKey),
+            Top_Bar(scaffoldKey: _scaffoldKey, email : userData.email),
             Second_App_Title(text1: "Les ", text2: "boissons"),
             Container(
               padding: const EdgeInsets.fromLTRB(30, 70, 20, 30),
@@ -104,4 +104,10 @@ class _Drink_State extends State<Drink> {
       ),
     );
   }
+}
+
+class DrinkData {
+  final String email;
+
+  DrinkData({required this.email});
 }

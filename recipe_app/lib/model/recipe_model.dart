@@ -1,15 +1,15 @@
-class User {
+class Recipe {
   String? id;
   String name;
   String picture;
   String description;
   String time;
   String difficulty;
-  String note;
-  String ingredients;
+  List<dynamic> note;
+  List<dynamic> ingredients;
 
-  User({
-    this.id,
+  Recipe({
+    required this.id,
     required this.name,
     required this.picture,
     required this.description,
@@ -19,7 +19,7 @@ class User {
     required this.ingredients,
   });
 
-  User.fromJson(Map<String, dynamic> json)
+  Recipe.fromJson(Map<String, dynamic> json)
       : id = json['_id'],
         name = json['name'],
         picture = json['picture'],
@@ -43,7 +43,6 @@ class User {
       };
     } else {
       return {
-        '_id': id,
         'name': name,
         'picture': picture,
         'description': description,
@@ -54,6 +53,4 @@ class User {
       };
     }
   }
-
-  
 }

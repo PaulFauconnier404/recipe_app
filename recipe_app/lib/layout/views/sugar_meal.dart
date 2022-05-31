@@ -39,6 +39,8 @@ class _Sugar_Meal_State extends State<Sugar_Meal> {
 
   @override
   Widget build(BuildContext context) {
+    final SugarData userData = ModalRoute.of(context)!.settings.arguments as SugarData;
+
     return Scaffold(  
       key: _scaffoldKey,
       drawer: Drawer_Implement(),
@@ -49,7 +51,7 @@ class _Sugar_Meal_State extends State<Sugar_Meal> {
         child: Column(
             children: [
               
-              Top_Bar(scaffoldKey : _scaffoldKey),
+              Top_Bar(scaffoldKey: _scaffoldKey, email : userData.email),
               Second_App_Title(text1:"Les plats ", text2:"sucrés"),
               Container(
                 padding: const EdgeInsets.fromLTRB(30, 70, 20, 30),
@@ -81,4 +83,10 @@ class _Sugar_Meal_State extends State<Sugar_Meal> {
       ), 
     ); 
   }
+}
+
+class SugarData {
+  final String email;
+
+  SugarData({required this.email});
 }

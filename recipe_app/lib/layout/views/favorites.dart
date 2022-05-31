@@ -68,8 +68,8 @@ class _Favorites_State extends State<Favorites> {
 
   @override
   Widget build(BuildContext context) {
-    final GlobalKey<ScaffoldState> _scaffoldKey =
-        new GlobalKey<ScaffoldState>();
+    final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
+    final FavoritesData userData = ModalRoute.of(context)!.settings.arguments as FavoritesData;
 
     return Scaffold(
       key: _scaffoldKey,
@@ -81,7 +81,7 @@ class _Favorites_State extends State<Favorites> {
         // ListView.separated : Construction des widgets visibles + s ́eparateur
         child: Column(
           children: [
-            Top_Bar(scaffoldKey : _scaffoldKey),
+            Top_Bar(scaffoldKey: _scaffoldKey, email : userData.email),
             Second_App_Title(text1: "Mes ", text2: "favoris"),
             Container(
               padding: const EdgeInsets.fromLTRB(30, 70, 20, 30),
@@ -105,4 +105,10 @@ class _Favorites_State extends State<Favorites> {
       ),
     );
   }
+}
+
+class FavoritesData {
+  final String email;
+
+  FavoritesData({required this.email});
 }

@@ -67,9 +67,10 @@ class _Salt_Meal_State extends State<Salt_Meal> {
       cards[index]['press'] = !cards[index]['press'];
     });
   }
-
   @override
   Widget build(BuildContext context) {
+    final LoginData userData = ModalRoute.of(context)!.settings.arguments as LoginData;
+
     return Scaffold(
       key: _scaffoldKey,
       drawer: Drawer_Implement(),
@@ -80,8 +81,9 @@ class _Salt_Meal_State extends State<Salt_Meal> {
         // ListView.separated : Construction des widgets visibles + s ́eparateur
         child: Column(
           children: [
-            Top_Bar(scaffoldKey: _scaffoldKey),
+            Top_Bar(scaffoldKey: _scaffoldKey, email : userData.email),
             Second_App_Title(text1: "Les plats ", text2: "salés"),
+            Text("Bienvenue ${userData.email}"),
             Container(
               padding: const EdgeInsets.fromLTRB(30, 70, 20, 30),
               height: 900,
@@ -104,4 +106,11 @@ class _Salt_Meal_State extends State<Salt_Meal> {
       ),
     );
   }
+  
+}
+
+class LoginData {
+  final String email;
+
+  LoginData({required this.email});
 }
