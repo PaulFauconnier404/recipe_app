@@ -1,6 +1,7 @@
 import 'package:recipe_app/layout/all_layout.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:recipe_app/model/recipe_model.dart';
 import 'package:recipe_app/model/recipe_provider.dart';
 // import 'package:flutter_svg/flutter_svg.dart';
 // import 'package:google_fonts/google_fonts.dart';
@@ -72,6 +73,7 @@ class _Sugar_Meal_State extends State<Sugar_Meal> {
 
   @override
   Widget build(BuildContext context) {
+    //List<Recipe> recipes = Provider.of<RecipeProvider>(context).recipe;
     return Scaffold(
       key: _scaffoldKey,
       drawer: Drawer_Implement(),
