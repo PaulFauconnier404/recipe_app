@@ -26,9 +26,9 @@ class RecipeProvider with ChangeNotifier {
     try {
       http.Response response = await http.get(Uri.parse('$host/api/recipes'));
       if (response.statusCode == 200) {
-        _recipes = (json.decode(response.body) as List)
-            .map((recipeJson) => Recipe.fromJson(recipeJson))
-            .toList();
+        Map<String, dynamic> map = jsonDecode(response.body);
+        Recipe recipe = Recipe.fromJson(map);
+        _recipes.add(recipe);
         notifyListeners();
       }
     } catch (e) {
