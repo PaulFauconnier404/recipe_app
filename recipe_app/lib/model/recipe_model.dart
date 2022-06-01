@@ -4,6 +4,7 @@ class Recipe {
   String picture;
   String description;
   String time;
+  String category;
   String difficulty;
   List<dynamic> note;
   List<dynamic> ingredients;
@@ -14,6 +15,7 @@ class Recipe {
     required this.picture,
     required this.description,
     required this.time,
+    required this.category,
     required this.difficulty,
     required this.note,
     required this.ingredients,
@@ -25,6 +27,7 @@ class Recipe {
         picture = json['picture'],
         description = json['description'],
         time = json['time'],
+        category = json['category'],
         difficulty = json['difficulty'],
         note = json['note'],
         ingredients = json['ingredients'];
@@ -37,6 +40,7 @@ class Recipe {
         'picture': picture,
         'description': description,
         'time': time,
+        'category': category,
         'difficulty': difficulty,
         'note': note,
         'ingredients': ingredients,
@@ -47,6 +51,7 @@ class Recipe {
         'picture': picture,
         'description': description,
         'time': time,
+        'category': category,
         'difficulty': difficulty,
         'note': note,
         'ingredients': ingredients,

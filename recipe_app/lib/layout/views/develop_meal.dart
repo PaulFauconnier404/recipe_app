@@ -21,10 +21,10 @@ class _Develop_Meal_State extends State<Develop_Meal> {
   @override
   Widget build(BuildContext context) {
     final MealData userData = ModalRoute.of(context)!.settings.arguments as MealData;
-
+  print(userData.id +' ----- '+ userData.email);
     return Scaffold(
       key: _scaffoldKey,
-      drawer: Drawer_Implement(),
+      drawer: Drawer_Implement(email: userData.email,),
       body: Container(
           child: Column(
         children: [
@@ -73,6 +73,7 @@ class _Develop_Meal_State extends State<Develop_Meal> {
 
 class MealData {
   final String email;
+  final String id;
 
-  MealData({required this.email});
+  MealData({required this.email, required this.id});
 }

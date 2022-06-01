@@ -31,10 +31,10 @@ class _Salt_Meal_State extends State<Salt_Meal> {
     Provider.of<RecipeProvider>(context).fetchData();
     List<Recipe> recipes = Provider.of<RecipeProvider>(context).recipes;
 
-print(recipes[0].name);
+
     return Scaffold(
       key: _scaffoldKey,
-      drawer: Drawer_Implement(),
+      drawer: Drawer_Implement(email: userData.email,),
       body: Container(
         decoration: BoxDecoration(
           color: const Color(0xFFF5F5F5),
@@ -44,21 +44,28 @@ print(recipes[0].name);
           children: [
             Top_Bar(scaffoldKey: _scaffoldKey, email : userData.email),
             Second_App_Title(text1: "Les plats ", text2: "salés"),
-            Text("Bienvenue ${userData.email}"),
             Container(
               padding: const EdgeInsets.fromLTRB(30, 70, 20, 30),
-              height: 900,
+              height: 700,
               child: ListView.builder(
                 itemBuilder: (context, i) {
-                  return Card_View(
-                      id: recipes[i].id as String,
+                  if(recipes[i].category == 'salt'){
+                    return Card_View(
+                      id: recipes[i].id,
                       title: recipes[i].name as String,
                       text: recipes[i].description as String,
                       image: recipes[i].picture as String,
                       time: recipes[i].time as String,
                       difficulty: recipes[i].difficulty as String,
-                      stars: recipes[i].note[0] as String,
-                      sideP: false as bool);
+                      stars: recipes[i].note as List<dynamic>,
+                      ingredient: recipes[i].ingredients as List<dynamic>,
+                      sideP: false as bool,
+                      email: userData.email,
+                      );
+                  }else{
+                    return SizedBox(width: 0, height: 0,);
+                  }
+                  
                 },
                 itemCount: recipes.length,
               ),

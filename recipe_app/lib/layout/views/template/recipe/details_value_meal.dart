@@ -16,7 +16,7 @@ class Details_Value_Meal extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 180,
+      width: 170,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -34,7 +34,7 @@ class Details_Value_Meal extends StatelessWidget {
                 ),
               ),
               Text(
-                time,
+                time + ' min',
                 textDirection: TextDirection.ltr,
                 style: GoogleFonts.montserrat(
                   color: Color(0xFF404040),
@@ -52,7 +52,7 @@ class Details_Value_Meal extends StatelessWidget {
               color: Color(0xFF404040),
               fontWeight: FontWeight.w600,
               decoration: TextDecoration.none,
-              fontSize: 12.0,
+              fontSize: 11.0,
             ),
           ),
           Row(

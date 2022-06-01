@@ -26,7 +26,7 @@ class _Favorites_State extends State<Favorites> {
 
     return Scaffold(
       key: _scaffoldKey,
-      drawer: Drawer_Implement(),
+      drawer: Drawer_Implement(email: userData.email,),
       body: Container(
         decoration: BoxDecoration(
           color: const Color(0xFFF5F5F5),

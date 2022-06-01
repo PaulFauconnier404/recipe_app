@@ -63,7 +63,6 @@ class _Login_State extends State<Login> {
     }
 
     return Scaffold(
-      drawer: Drawer_Implement(),
       body: Column(mainAxisAlignment: MainAxisAlignment.start, children: [
         First_App_Title(),
          Form(
