@@ -34,6 +34,23 @@ class UserProvider with ChangeNotifier {
     }
   }
 
+
+  // Récupérer un seul user
+  void selectByEmail(email) async {
+    try {
+      http.Response response = await http.get(Uri.parse('$host/api/users/'+email));
+      if (response.statusCode == 200) {
+        Map<String, dynamic> map = jsonDecode(response.body);
+        User user = User.fromJson(map);
+        _users.add(user);
+        
+        notifyListeners();
+      }
+    } catch (e) {
+      rethrow;
+    }
+  }
+
   // Ajouter un profile dans la base de données
   Future<void> addUser(User newUser) async {
     try {
@@ -42,7 +59,10 @@ class UserProvider with ChangeNotifier {
         body: json.encode(newUser.toJson()),
         headers: {'Content-type': 'application/json'},
       );
+   
       if (response.statusCode == 200) {
+        print('good');
+
         _users.add(
           User.fromJson(
             json.decode(response.body),
@@ -52,15 +72,49 @@ class UserProvider with ChangeNotifier {
 
       }
     } catch (e) {
+        print(e);
+
       rethrow;
     }
   }
 
-  Future<String> logUser(User user) async {
+    // Ajouter un profile dans la base de données
+  Future<void> updateUser(User newUser, String id) async {
+    try {
+      http.Response response = await http.patch(
+        Uri.parse('$host/api/users/'+id),
+        body: json.encode(newUser.toJson()),
+        headers: {'Content-type': 'application/json'},
+      );
+        print(json.encode(newUser.toJson()));
+        print(response.body);
+
+      if (response.statusCode == 200) {
+
+        _users.add(
+          User.fromJson(
+            json.decode(response.body),
+          ),
+        );
+        notifyListeners();
+
+      }
+    } catch (e) {
+        print(e);
+
+      rethrow;
+    }
+  }
+
+  Future<String> logUser(String email, String password) async {
+
     try {
       http.Response response = await http.post(
         Uri.parse('$host/api/users/login'),
-        body: json.encode(user.toJson()),
+        body: json.encode({
+          "email": email,
+          "password" : password
+        }),
         headers: {'Content-type': 'application/json'},
       );
       Map<String, dynamic> temp = json.decode(response.body);

@@ -1,11 +1,36 @@
 [
    {
-      "_id": 1,
+      "_id":  {
+         "$oid": "62969ef348ffc0729ea96d07"
+       },
       "name": "Gâteau au chocolat",
-      "picture": "/data",
-      "description": "Lorem",
+      "picture": "image/recipe/cake.png",
+      "description": "Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise",
       "time": "20",
+      "category": "sugar",
       "difficulty": "Facile",
+      "note": [
+         {
+            "user" : "1",
+            "note" : "4"
+         },
+         {
+            "user" : "2",
+            "note" : "2"
+         }
+      ],
+      "ingredients" : ["Chocolat", "Farine", "Levure"]
+   },
+   {
+      "_id":  {
+         "$oid": "62969ef648ffc0729ea96d07"
+       },
+      "name": "Pizza au chocolat",
+      "picture": "image/recipe/pizza.png",
+      "description": "Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise",
+      "time": "90",
+      "category": "salt",
+      "difficulty": "Difficile",
       "note": [
          {
             "user" : "1",

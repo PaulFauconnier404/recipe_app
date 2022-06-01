@@ -4,27 +4,40 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:recipe_app/layout/all_layout.dart';
 
 class Card_View extends StatelessWidget {
+  final id;
   final String title;
   final String text;
   final String image;
   final String time;
   final String difficulty;
-  final String stars;
+  final List<dynamic> stars;
+  final List<dynamic> ingredient;
   final bool sideP;
 
+
+  final String email;
+
+
+
   Card_View({
+    this.id,
     required this.title,
     required this.text,
     required this.image,
     required this.time,
     required this.difficulty,
     required this.stars,
+    required this.ingredient,
     required this.sideP,
+
+    required this.email,
   });
 
   @override
   Widget build(BuildContext context) {
-   return Container(
+
+
+  return Container(
       width: 300,
       height: 250,
       clipBehavior: Clip.none,
@@ -42,8 +55,8 @@ class Card_View extends StatelessWidget {
           clipBehavior: Clip.none,
           children: [
             Positioned(
-              left : sideP ? -50.0 : null,
-              right: sideP ? null : -50.0,
+              left : sideP ? -80.0 : null,
+              right: sideP ? null : -80.0,
               bottom: -50.0,
               child: Container(
                 width: 150.0,
@@ -63,6 +76,20 @@ class Card_View extends StatelessWidget {
               child: Container(
                 width: 70.0,
                 height: 40.0,
+                child: InkWell(
+                  onTap: () {
+                    Navigator.pushNamed(
+                      context,
+                      Develop_Meal.routeName,
+                      arguments: MealData(
+                        email: email as String,
+                        id: id,
+                      ),
+                    );
+                  }, // Handle your callback
+                  child: Ink(
+                  ),
+                ),
                 decoration: BoxDecoration(
                   color: Color(0xFFFFC2C2),
 
@@ -83,7 +110,7 @@ class Card_View extends StatelessWidget {
               ),
             ),
             Container(
-              padding: EdgeInsets.fromLTRB(10, 20, 30, 10),
+              padding: EdgeInsets.fromLTRB(20, 30, 30, 10),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -97,7 +124,7 @@ class Card_View extends StatelessWidget {
                     ),      
                   ),
                   Padding(
-                    padding : sideP ? EdgeInsets.fromLTRB(90, 15, 0, 0) : EdgeInsets.fromLTRB(30, 15, 80, 0),
+                    padding : sideP ? EdgeInsets.fromLTRB(70, 10, 0, 0) : EdgeInsets.fromLTRB(30, 15, 60, 0),
                     child: Text(
                       text,
                       textDirection: TextDirection.ltr,
@@ -109,7 +136,7 @@ class Card_View extends StatelessWidget {
                       ),      
                     ),
                   ),
-                  Details_Value_Meal(time: time, difficulty: difficulty, stars: stars)
+                  Details_Value_Meal(time: time, difficulty: difficulty, stars: '4.5')
                 ],
               )
             ),
