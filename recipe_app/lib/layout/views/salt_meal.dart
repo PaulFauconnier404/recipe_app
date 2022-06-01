@@ -31,7 +31,7 @@ class _Salt_Meal_State extends State<Salt_Meal> {
     Provider.of<RecipeProvider>(context).fetchData();
     List<Recipe> recipes = Provider.of<RecipeProvider>(context).recipes;
 
-
+    print(recipes[0].id);
     return Scaffold(
       key: _scaffoldKey,
       drawer: Drawer_Implement(email: userData.email,),
@@ -57,10 +57,12 @@ class _Salt_Meal_State extends State<Salt_Meal> {
                       image: recipes[i].picture as String,
                       time: recipes[i].time as String,
                       difficulty: recipes[i].difficulty as String,
-                      stars: recipes[i].note as List<dynamic>,
+                      stars: recipes[i].note,
                       ingredient: recipes[i].ingredients as List<dynamic>,
                       sideP: false as bool,
+
                       email: userData.email,
+                      returnRoute: LoginData,
                       );
                   }else{
                     return SizedBox(width: 0, height: 0,);

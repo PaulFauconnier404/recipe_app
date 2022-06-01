@@ -63,7 +63,9 @@ class _Sugar_Meal_State extends State<Sugar_Meal> {
                       stars: recipes[i].note as List<dynamic>,
                       ingredient: recipes[i].ingredients as List<dynamic>,
                       sideP: false as bool,
+
                       email: userData.email,
+                      returnRoute: SugarData,
                       );
                   }else{
                     return SizedBox(width: 0, height: 0,);

@@ -47,7 +47,8 @@ class _Drink_State extends State<Drink> {
               height: 700,
               child: ListView.builder(
                 itemBuilder: (context, i) {
-                  if(recipes[i].category == 'drink'){
+                  if(recipes[i].category == 'drinks'){
+
                     return Card_View(
                       id: recipes[i].id,
                       title: recipes[i].name as String,
@@ -58,7 +59,10 @@ class _Drink_State extends State<Drink> {
                       stars: recipes[i].note as List<dynamic>,
                       ingredient: recipes[i].ingredients as List<dynamic>,
                       sideP: false as bool,
+
                       email: userData.email,
+                      returnRoute: DrinkData,
+
                       );
                   }else{
                     return SizedBox(width: 0, height: 0,);

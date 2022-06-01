@@ -5,7 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 class Details_Value_Meal extends StatelessWidget {
   final String time;
   final String difficulty;
-  final String stars;
+  final List<dynamic> stars;
 
   Details_Value_Meal({
     required this.time,
@@ -13,8 +13,22 @@ class Details_Value_Meal extends StatelessWidget {
     required this.stars,
   });
 
+
+  
+
   @override
   Widget build(BuildContext context) {
+    int i, k, f;
+
+    double note;
+    k = stars.length;
+    f = 0;
+    for(i=0; i<stars.length; i++){
+      f = stars[i] + f;
+    }
+    note = f / k;
+    
+    String noteDisplay = note.toStringAsFixed(2);
     return Container(
       width: 170,
       child: Row(
@@ -69,7 +83,7 @@ class Details_Value_Meal extends StatelessWidget {
                 ),
               ),
               Text(
-                stars,
+                noteDisplay,
                 textDirection: TextDirection.ltr,
                 style: GoogleFonts.montserrat(
                   color: Color(0xFF404040),

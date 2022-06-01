@@ -8,10 +8,7 @@ const recipeSchema = mongoose.Schema({
   time: { type: String, required: true },
   category: { type: String, required: true },
   difficulty: { type: String, required: true },
-  note: [{
-    user : { type: String, required: true },
-    note : { type: String, required: true },
-  }],
+  note: [{}],
   ingredients : [{ type: String, required: true}]
 });
 

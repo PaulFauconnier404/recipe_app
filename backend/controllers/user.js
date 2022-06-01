@@ -18,7 +18,7 @@ const ObjectId = require('mongodb').ObjectId;
 exports.getOneUser = (req, res, next) => {
   const id = new ObjectId(req.params.id);
   
-  User.findOne({id : id}).then(
+  User.findOne({_id : id}).then(
     (users) => {
       res.status(200).json(users);
     }

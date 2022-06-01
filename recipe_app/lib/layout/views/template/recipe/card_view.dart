@@ -16,6 +16,7 @@ class Card_View extends StatelessWidget {
 
 
   final String email;
+  final returnRoute;
 
 
 
@@ -31,6 +32,7 @@ class Card_View extends StatelessWidget {
     required this.sideP,
 
     required this.email,
+    required this.returnRoute,
   });
 
   @override
@@ -55,12 +57,12 @@ class Card_View extends StatelessWidget {
           clipBehavior: Clip.none,
           children: [
             Positioned(
-              left : sideP ? -80.0 : null,
-              right: sideP ? null : -80.0,
-              bottom: -50.0,
+              left : sideP ? -40.0 : null,
+              right: sideP ? null : -40.0,
+              bottom: -40.0,
               child: Container(
-                width: 150.0,
-                height: 150.0,
+                width: 120.0,
+                height: 120.0,
                 decoration:  BoxDecoration(
                   image: DecorationImage(
                     image: AssetImage(image),
@@ -84,6 +86,7 @@ class Card_View extends StatelessWidget {
                       arguments: MealData(
                         email: email as String,
                         id: id,
+                        returnRoute: returnRoute,
                       ),
                     );
                   }, // Handle your callback
@@ -136,7 +139,7 @@ class Card_View extends StatelessWidget {
                       ),      
                     ),
                   ),
-                  Details_Value_Meal(time: time, difficulty: difficulty, stars: '4.5')
+                  Details_Value_Meal(time: time, difficulty: difficulty, stars: stars)
                 ],
               )
             ),

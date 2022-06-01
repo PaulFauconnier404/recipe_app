@@ -8,10 +8,8 @@ const ObjectId = require('mongodb').ObjectId;
 exports.getOneRecipe = (req, res, next) => {
   const id = new ObjectId(req.params.id);
 
-  Recipe.findOne({id : id}).then(
-    (users) => {
-      res.status(200).json(users);
-    }
+  Recipe.findOne({_id : id}).then(
+    (recipes) => {res.status(200).json(recipes);}
   ).catch(
     (error) => {
       res.status(400).json({

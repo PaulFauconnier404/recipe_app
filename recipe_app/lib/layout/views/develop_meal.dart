@@ -20,13 +20,18 @@ class Develop_Meal extends StatefulWidget {
 
 class _Develop_Meal_State extends State<Develop_Meal> {
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
+  bool view = true;
 
   @override
   Widget build(BuildContext context) {
     final MealData userData = ModalRoute.of(context)!.settings.arguments as MealData;
 
-    Provider.of<RecipeProvider>(context).selectOne(userData.id);
-    List<Recipe> recipes = Provider.of<RecipeProvider>(context).recipes;
+    if(view == true){
+      Provider.of<RecipeProvider>(context).selectOne(userData.id);
+      view = false;
+    }
+    List<Recipe> recipes = Provider.of<RecipeProvider>(context).oneRecipe;
+   
 
 
     return Scaffold(
@@ -56,7 +61,7 @@ class _Develop_Meal_State extends State<Develop_Meal> {
                 child: Column(
                   children: [
                     //En-tete de la card
-                    Top_View_Dev_Recipe(url: recipes[0].picture),
+                    Top_View_Dev_Recipe(url: recipes[0].picture, email: userData.email, returnRoute: userData.returnRoute ),
                     //Développement de la recette
                     Recipe_Dev_Title(
                         title: recipes[0].name,
@@ -81,6 +86,7 @@ class _Develop_Meal_State extends State<Develop_Meal> {
 class MealData {
   final String email;
   final String id;
+  final returnRoute;
 
-  MealData({required this.email, required this.id});
+  MealData({required this.email, required this.id, required this.returnRoute});
 }
