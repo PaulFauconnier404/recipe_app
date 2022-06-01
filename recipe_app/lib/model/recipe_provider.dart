@@ -29,9 +29,7 @@ class RecipeProvider with ChangeNotifier {
         _recipes = (json.decode(response.body) as List)
             .map((recipeJson) => Recipe.fromJson(recipeJson))
             .toList();
-        // Map<String, dynamic> map = jsonDecode(response.body);
-        // Recipe recipe = Recipe.fromJson(map);
-        // _recipes.add(recipe);
+       
 
         notifyListeners();
       }
@@ -39,6 +37,24 @@ class RecipeProvider with ChangeNotifier {
       rethrow;
     }
   }
+
+
+  // Récupérer un seul user
+  void selectOne(id) async {
+    try {
+      http.Response response = await http.get(Uri.parse('$host/api/recipes/'+id));
+      if (response.statusCode == 200) {
+        Map<String, dynamic> map = jsonDecode(response.body);
+        Recipe recipe = Recipe.fromJson(map);
+        _recipes.add(recipe);
+        
+        notifyListeners();
+      }
+    } catch (e) {
+      rethrow;
+    }
+  }
+
 
   // Ajouter un profile dans la base de données
   Future<void> addRecipe(Recipe newRecipe) async {

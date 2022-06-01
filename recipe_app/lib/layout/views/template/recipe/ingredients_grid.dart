@@ -4,19 +4,13 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:recipe_app/layout/all_layout.dart';
 
 class Ingredients_Grid extends StatelessWidget {
-  // final String text;
+  final List ingerdients;
 
-  // Ingredients_Grid({
-  //   required this.text,
-  // });
+  Ingredients_Grid({
+    required this.ingerdients,
+  });
 
-  List cards = [
-    {"image_ingredient": "image/ingredients/tomate.png", "label": "Tomates"},
-    {"image_ingredient": "image/ingredients/tomate.png", "label": "Tomates"},
-    {"image_ingredient": "image/ingredients/tomate.png", "label": "Tomates"},
-    {"image_ingredient": "image/ingredients/tomate.png", "label": "Tomates"}
-  ];
-
+ 
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -45,11 +39,11 @@ class Ingredients_Grid extends StatelessWidget {
                   crossAxisCount: 3,
                   crossAxisSpacing: 1.0,
                   mainAxisSpacing: 1.0),
-              itemCount: cards.length,
+              itemCount: ingerdients.length,
               itemBuilder: (context, i) {
                 return Ingredients_Items(
-                  image: cards[i]['image_ingredient'],
-                  text: cards[i]['label'],
+                  image: 'image/ingredients/'+ingerdients[i]+'.png',
+                  text: ingerdients[i],
                 );
               },
             )),
