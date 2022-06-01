@@ -21,6 +21,8 @@ class Favorites extends StatefulWidget {
 }
 
 class _Favorites_State extends State<Favorites> {
+  bool view = true;
+
   @override
   Widget build(BuildContext context) {
     final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
@@ -29,14 +31,16 @@ class _Favorites_State extends State<Favorites> {
     Provider.of<UserProvider>(context).selectByEmail(userData.email);
     List<User> users = Provider.of<UserProvider>(context).users;
 
-    // List<dynamic> favRecipe = users[0].favrecipe as List<dynamic>;
-    // List<dynamic> recipeFav = [];
-    // for (var i = 0; i < favRecipe.length; i++) {
-    //   Provider.of<RecipeProvider>(context).selectOne(favRecipe[i]);
+    List<dynamic> favRecipe = users[0].favrecipe as List<dynamic>;
 
-    //   recipeFav.add(Provider.of<RecipeProvider>(context).oneRecipe);
 
-    // }
+    if(view == true){
+      Provider.of<RecipeProvider>(context).selectFav(favRecipe);
+      view = false;
+    }
+    List<dynamic> recipeFav = Provider.of<RecipeProvider>(context).favRecipe;
+
+                print(recipeFav[0].category);
 
     return Scaffold(
       key: _scaffoldKey,
@@ -55,25 +59,25 @@ class _Favorites_State extends State<Favorites> {
             Container(
               padding: const EdgeInsets.fromLTRB(30, 70, 20, 30),
               height: 700,
-              // child: ListView.builder(
-              //   itemBuilder: (context, i) {
-              //     return Card_View(
-              //       id: recipeFav[i].id,
-              //       title: recipeFav[i].name as String,
-              //       text: recipeFav[i].description as String,
-              //       image: recipeFav[i].picture as String,
-              //       time: recipeFav[i].time as String,
-              //       difficulty: recipeFav[i].difficulty as String,
-              //       stars: recipeFav[i].note as List<dynamic>,
-              //       ingredient: recipeFav[i].ingredients as List<dynamic>,
-              //       sideP: false as bool,
+              child: ListView.builder(
+                itemBuilder: (context, i) {
+                  return Card_View(
+                    id: recipeFav[i].id,
+                    title: recipeFav[i].name as String,
+                    text: recipeFav[i].description as String,
+                    image: recipeFav[i].picture as String,
+                    time: recipeFav[i].time as String,
+                    difficulty: recipeFav[i].difficulty as String,
+                    stars: recipeFav[i].note as List<dynamic>,
+                    ingredient: recipeFav[i].ingredients as List<dynamic>,
+                    sideP: false as bool,
 
-              //       email: userData.email,
-              //       returnRoute: FavoritesData,
-              //     );
-              //   },
-              //   itemCount: recipeFav.length,
-              // ),
+                    email: userData.email,
+                    returnRoute: FavoritesData,
+                  );
+                },
+                itemCount: recipeFav.length,
+              ),
             ),
           ],
         ),

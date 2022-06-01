@@ -63,7 +63,7 @@ class Drawer_Implement extends StatelessWidget {
                 Row_Icons_Text_Drawer(text: 'Plats Salés', icon: Icons.local_pizza, url: "/salt-meal", voidToUp: LoginData, email: email),
                 Row_Icons_Text_Drawer(text: 'Plats Sucrés', icon: Icons.cake, url: "/sugar-meal", voidToUp: SugarData, email: email ),
                 Row_Icons_Text_Drawer(text: 'Boissons', icon: Icons.local_bar, url: "/drinks", voidToUp: DrinkData, email: email ),
-                // Row_Icons_Text_Drawer(text: 'Mes Favoris', icon: Icons.favorite, url: "/my-favorites", voidToUp: FavoritesData, email: email ),
+                Row_Icons_Text_Drawer(text: 'Mes Favoris', icon: Icons.favorite, url: "/my-favorites", voidToUp: FavoritesData, email: email ),
                 Padding(
                   padding: EdgeInsets.fromLTRB(50, 20, 50, 20),
                   child:Container(

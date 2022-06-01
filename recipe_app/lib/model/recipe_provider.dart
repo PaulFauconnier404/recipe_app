@@ -16,12 +16,14 @@ class RecipeProvider with ChangeNotifier {
   final String host = 'http://localhost:3000';
   List<Recipe> _recipes = [];
   List<Recipe> _oneRecipe = [];
+  List<Recipe> _favRecipe = [];
   //List<Recipe> _recipes =new List<Recipe>();
 
   // Getter pour l'accès en lecture de l'ensemble des profiles
   // Pas de modificiation possible grâce au type UnmodifiableListView
   UnmodifiableListView<Recipe> get recipes => UnmodifiableListView(_recipes);
   UnmodifiableListView<Recipe> get oneRecipe => UnmodifiableListView(_oneRecipe);
+  UnmodifiableListView<Recipe> get favRecipe => UnmodifiableListView(_favRecipe);
 
   // Récupérer les données dans la base de données
   void fetchData() async {
@@ -53,7 +55,28 @@ class RecipeProvider with ChangeNotifier {
         _oneRecipe.add(recipe);
         notifyListeners();
       }
-      return;
+    
+  }
+
+  // Récupérer un seul user
+  Future<void> selectFav(List<dynamic> favTab) async {
+      _favRecipe = [];
+
+      for(var i=0; i< favTab.length; i++){
+
+        http.Response response = await http.get(Uri.parse('$host/api/recipes/'+favTab[i]));
+          if (response.statusCode == 200) {
+
+            Map<String, dynamic> map = jsonDecode(response.body);
+            Recipe recipe = Recipe.fromJson(map);
+            
+
+            _favRecipe.add(recipe);
+
+            notifyListeners();
+          }
+      }
+      
     
   }
 
@@ -83,8 +106,7 @@ class RecipeProvider with ChangeNotifier {
    // Ajouter un profile dans la base de données
   Future<void> updateRecipe(List<dynamic> newRecipe, id) async {
     try {
-      print(newRecipe);
-    print( " ---- "+ id);
+
 
 
       http.Response response = await http.patch(
