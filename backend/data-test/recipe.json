@@ -25,8 +25,8 @@
       "_id":  {
          "$oid": "62969af348ffc0739ea96d07"
        },
-      "name": "Gâteau Glacé",
-      "picture": "image/recipe/cake2.png",
+      "name": "Tarte au fraise",
+      "picture": "image/recipe/tarte.png",
       "description": "Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise",
       "time": "20",
       "category": "sugar",
@@ -47,8 +47,8 @@
       "_id":  {
          "$oid": "62969ef348afc0529ea96d07"
        },
-      "name": "Gâteau Banane",
-      "picture": "image/recipe/cake3.png",
+      "name": "Tiramisu",
+      "picture": "image/recipe/tiramisu.png",
       "description": "Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise",
       "time": "20",
       "category": "sugar",
