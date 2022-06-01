@@ -78,4 +78,37 @@ class RecipeProvider with ChangeNotifier {
       rethrow;
     }
   }
+
+
+   // Ajouter un profile dans la base de données
+  Future<void> updateRecipe(List<dynamic> newRecipe, id) async {
+    try {
+      print(newRecipe);
+    print( " ---- "+ id);
+
+
+      http.Response response = await http.patch(
+        Uri.parse('$host/api/recipes/'+id),
+        body: json.encode({"note" : newRecipe}),
+        headers: {'Content-type': 'application/json'},
+      );
+       if (response.statusCode == 200) {
+         _oneRecipe = [];
+
+        _oneRecipe.add(
+          Recipe.fromJson(
+            json.decode(response.body),
+          ),
+        );
+        notifyListeners();
+
+      }
+    } catch (e) {
+        print(e);
+
+      rethrow;
+    }
+  }
+
+
 }

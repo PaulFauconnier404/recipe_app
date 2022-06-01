@@ -61,7 +61,7 @@ class UserProvider with ChangeNotifier {
       );
    
       if (response.statusCode == 200) {
-        print('good');
+         _users = [];
 
         _users.add(
           User.fromJson(
@@ -79,18 +79,16 @@ class UserProvider with ChangeNotifier {
   }
 
     // Ajouter un profile dans la base de données
-  Future<void> updateUser(User newUser, String id) async {
+  Future<void> updateUser(User newUser, id) async {
     try {
       http.Response response = await http.patch(
         Uri.parse('$host/api/users/'+id),
         body: json.encode(newUser.toJson()),
         headers: {'Content-type': 'application/json'},
       );
-        print(json.encode(newUser.toJson()));
-        print(response.body);
-
-      if (response.statusCode == 200) {
-
+       if (response.statusCode == 200) {
+         _users = [];
+         print(json.decode(response.body));
         _users.add(
           User.fromJson(
             json.decode(response.body),

@@ -21,6 +21,7 @@ class Develop_Meal extends StatefulWidget {
 class _Develop_Meal_State extends State<Develop_Meal> {
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
   bool view = true;
+  bool _starsUp = false;
 
   @override
   Widget build(BuildContext context) {
@@ -31,13 +32,21 @@ class _Develop_Meal_State extends State<Develop_Meal> {
       view = false;
     }
     List<Recipe> recipes = Provider.of<RecipeProvider>(context).oneRecipe;
-   
+    List<dynamic> note = recipes[0].note;
 
+    void addNote(noteToAdd) async{
+      note.add(noteToAdd);
+      await Provider.of<RecipeProvider>(
+            context,
+            listen: false,
+          ).updateRecipe(note, recipes[0].id);
+    }
 
     return Scaffold(
       key: _scaffoldKey,
       drawer: Drawer_Implement(email: userData.email,),
       body: Container(
+      
           child: Column(
         children: [
           Top_Bar(scaffoldKey: _scaffoldKey, email : userData.email),
@@ -73,8 +82,88 @@ class _Develop_Meal_State extends State<Develop_Meal> {
                     //Grille des ingrédients
                     Ingredients_Grid(ingerdients : recipes[0].ingredients as List<dynamic>),
                     //Star notation
-                    Stars_Container()
-                  ],
+                    Container(
+                          width: 350,
+                          child: Column(
+                            children: [
+                              Container(
+                                width: 350,
+                                padding: EdgeInsets.all(20),
+                                child: Text(
+                                  'Ingrédients :',
+                                  textDirection: TextDirection.ltr,
+                                  textAlign: TextAlign.left,
+                                  style: GoogleFonts.montserrat(
+                                    color: Color(0xFF202020),
+                                    fontWeight: FontWeight.w500,
+                                    decoration: TextDecoration.none,
+                                    fontSize: 14.0,
+                                  ),
+                                ),
+                              ),
+                              SizedBox(
+                                width: 350,
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Padding(
+                                      padding: EdgeInsets.all(10),
+                                      child: IconButton(
+                                        icon: const Icon(Icons.star_border),
+                                        tooltip: '1',
+                                        onPressed: () {addNote(1);},
+                                      ),
+                                    ),
+                                    Padding(
+                                      padding: EdgeInsets.all(10),
+                                      child: IconButton(
+                                        icon: const Icon(Icons.star_border),
+                                        tooltip: '2',
+                                        onPressed: () {addNote(2);},
+                                      ),
+                                    ),
+                                    Padding(
+                                      padding: EdgeInsets.all(10),
+                                      child: IconButton(
+                                        icon: const Icon(Icons.star_border),
+                                        tooltip: '3',
+                                        onPressed: () {addNote(3);},
+                                      ),
+                                    ),
+                                    Padding(
+                                      padding: EdgeInsets.all(10),
+                                      child: IconButton(
+                                        icon: const Icon(Icons.star_border),
+                                        tooltip: '4',
+                                        onPressed: () {addNote(4);},
+                                      ),
+                                    ),
+                                    Padding(
+                                      padding: EdgeInsets.all(10),
+                                      child: IconButton(
+                                        icon: Icon(
+                                          _starsUp
+                                          ? Icons.star_border
+                                          : Icons.star
+
+                                          ),
+                                        tooltip: '5',
+                                        onPressed: () {
+                                          addNote(5);
+
+                                          setState(() {
+                                          _starsUp = !_starsUp;
+                                          });
+                                        },
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ],
+                          )
+                        )                  
+                        ],
                 )),
           )
         ],

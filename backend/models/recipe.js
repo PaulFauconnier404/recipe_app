@@ -12,6 +12,5 @@ const recipeSchema = mongoose.Schema({
   ingredients : [{ type: String, required: true}]
 });
 
-recipeSchema.plugin(uniqueValidator);
 
 module.exports = mongoose.model('Recipe', recipeSchema);

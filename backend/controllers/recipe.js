@@ -36,3 +36,25 @@ exports.getAllRecipe = (req, res, next) => {
 };
 
 
+
+exports.updateRecipe = async (req, res, next) => {
+
+  try {
+  const id = new ObjectId(req.params.id);
+
+  const recipe = await Recipe.findOne({ _id: id })
+
+  if (req.body.note) {
+    recipe.note = req.body.note
+  }
+ 
+
+  await recipe.save();
+  res.status(200).json(recipe)
+} catch {
+  res.status(404)
+  res.send({ error: "Recipe doesn't exist!" })
+}
+
+
+};

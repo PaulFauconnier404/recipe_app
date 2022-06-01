@@ -1,6 +1,7 @@
 const User = require('../models/user');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const { response } = require('../app');
 const ObjectId = require('mongodb').ObjectId; 
 
 
@@ -89,22 +90,36 @@ exports.createUser = (req, res, next) => {
 .catch(error => res.status(500).json({error: error}));
 };
 
-exports.updateUser = (req, res, next) => {
+exports.updateUser = async (req, res, next) => {
+
+  try {
   const id = new ObjectId(req.params.id);
 
- 
-  const user = new User({
-    _id: id,
-    name: req.body.name,
-    firstname: req.body.firstname,
-    birthdate: req.body.birthdate,
-    pseudo: req.body.pseudo,
-    email: req.body.email,
-  });
+  const user = await User.findOne({ _id: id })
 
-  user.patch()
-  .then(() => res.status(201).json({message: 'Utilisateur modifié'})).
-  catch(error => res.status(400).json({error: error}));
+  if (req.body.name) {
+    user.name = req.body.name
+  }
+  if (req.body.firstname) {
+    user.firstname = req.body.firstname
+  }
+  if (req.body.email) {
+    user.email = req.body.email
+  }
+  if (req.body.pseudo) {
+    user.pseudo = req.body.pseudo
+  }
+  if (req.body.favrecipe) {
+    user.favrecipe = req.body.favrecipe
+  }
+
+
+  await user.save();
+  res.status(200).json(user)
+} catch {
+  res.status(404)
+  res.send({ error: "User doesn't exist!" })
+}
 
 
 };

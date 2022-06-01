@@ -76,10 +76,14 @@ class _Update_Account_State extends State<Update_Account> {
     final UpdateData userData = ModalRoute.of(context)!.settings.arguments as UpdateData;
     
     Provider.of<UserProvider>(context).selectByEmail(userData.email);
+
     List<User> users = Provider.of<UserProvider>(context).users;
+    
+    id = users[0].id as String;
 
     return Scaffold(  
-          
+          key: _scaffoldKey,
+          drawer: Drawer_Implement(email: userData.email,),
           body: Container(
             decoration: BoxDecoration(
               color:const Color(0xFFF5F5F5),
