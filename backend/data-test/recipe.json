@@ -5,65 +5,38 @@
        },
       "name": "Gâteau au chocolat",
       "picture": "image/recipe/cake.png",
-      "description": "Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise",
+      "description": "Un gateau incontournable de part sa saveur et son onctuosité inégalable. Un régal pour les amateurs de chocolat.",
       "time": "20",
       "category": "sugar",
       "difficulty": "Facile",
-      "note": [
-         {
-            "user" : "1",
-            "note" : "4"
-         },
-         {
-            "user" : "2",
-            "note" : "2"
-         }
-      ],
-      "ingredients" : ["Chocolat", "Farine", "Levure"]
+      "note": [1,2,3,4,5],
+      "ingredients" : ["Chocolat", "Farine", "Levure","Oeuf"]
    },
    {
       "_id":  {
          "$oid": "62969af348ffc0739ea96d07"
        },
-      "name": "Tarte au fraise",
-      "picture": "image/recipe/tarte.png",
-      "description": "Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise",
-      "time": "20",
+      "name": "Cheese cake",
+      "picture": "image/recipe/cake2.png",
+      "description": "Le gâteau au fromage iconique des USA revisité, un régal pour les plus gourmands d'entre nous.",
+      "time": "70",
       "category": "sugar",
       "difficulty": "Facile",
-      "note": [
-         {
-            "user" : "1",
-            "note" : "4"
-         },
-         {
-            "user" : "2",
-            "note" : "2"
-         }
-      ],
-      "ingredients" : ["Chocolat", "Farine", "Levure","Glace"]
+      "note": [2,2,3,4,5,4,5,2,1,4,5],
+      "ingredients" : ["Chocolat", "Farine", "Levure","Glace","Beurre"]
    },
    {
       "_id":  {
          "$oid": "62969ef348afc0529ea96d07"
        },
-      "name": "Tiramisu",
-      "picture": "image/recipe/tiramisu.png",
-      "description": "Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise",
+      "name": "Gateau coulis chocolat",
+      "picture": "image/recipe/cake3.png",
+      "description": "Avec sa base à la banane et à la glace et le coulis au chocolat est un chef d'oeuvre.",
       "time": "20",
       "category": "sugar",
       "difficulty": "Facile",
-      "note": [
-         {
-            "user" : "1",
-            "note" : "4"
-         },
-         {
-            "user" : "2",
-            "note" : "4"
-         }
-      ],
-      "ingredients" : ["Chocolat", "Farine", "Levure","Banane"]
+      "note": [2,1,3,4,4,4,5,2,3,3,5],
+      "ingredients" : ["Chocolat", "Farine", "Levure","Banane","Glace","Lait","Beurre"]
    },
    {
       "_id":  {
@@ -71,20 +44,11 @@
        },
       "name": "Pizza au chocolat",
       "picture": "image/recipe/pizza.png",
-      "description": "Bien calorique, oui mais tous coupable",
+      "description": "Bien calorique, cette pizza originale par ses ingrédients est une option originale en saveur.",
       "time": "90",
       "category": "salt",
-      "difficulty": "Difficile",
-      "note": [
-         {
-            "user" : "1",
-            "note" : "4"
-         },
-         {
-            "user" : "2",
-            "note" : "2"
-         }
-      ],
+      "difficulty": "Facile",
+      "note": [1,1,3,4,1,1,2,2,3,3,5],
       "ingredients" : ["Chocolat", "Farine", "Levure"]
    },
    {
@@ -93,43 +57,25 @@
        },
       "name": "Pizza à la mozzarella",
       "picture": "image/recipe/pizza2.png",
-      "description": "Le classique Italien",
-      "time": "90",
+      "description": "Le classique Italien, incontournable dans le monde de la pizza.",
+      "time": "40",
       "category": "salt",
-      "difficulty": "Difficile",
-      "note": [
-         {
-            "user" : "1",
-            "note" : "4"
-         },
-         {
-            "user" : "2",
-            "note" : "2"
-         }
-      ],
+      "difficulty": "Facile",
+      "note": [5,5,3,4,1,5,2,3,3,3,5],
       "ingredients" : ["Levure", "Farine", "Oeuf", "Mozza","Tomate","Champignon","Basilic"]
    },
    {
       "_id":  {
          "$oid": "62969ff647ffb0729ea96d07"
        },
-      "name": "Pizza à la banane",
+      "name": "Pizza au choix",
       "picture": "image/recipe/pizza3.png",
-      "description": "C'est bizarre mais on s'y fait",
+      "description": "Un mélange où chacun trouvera sa part favorite. Idéal lors d'un repas entre amis.",
       "time": "4x0",
       "category": "salt",
-      "difficulty": "Difficile",
-      "note": [
-         {
-            "user" : "1",
-            "note" : "4"
-         },
-         {
-            "user" : "2",
-            "note" : "2"
-         }
-      ],
-      "ingredients" : ["Levure", "Farine", "Banane", "Sucre","Basilic"]
+      "difficulty": "Modéré",
+      "note": [5,4,3,4,1,5,2,4,3,3,4],
+      "ingredients" : ["Levure", "Farine", "Banane", "Sucre","Basilic","Champignon","Mozza","Oeuf","Tomate","Chocolat"]
    },
    {
       "_id":  {
@@ -137,20 +83,11 @@
        },
       "name": "Milkshake au chocolat",
       "picture": "image/recipe/milkshake.png",
-      "description": "Un bon jeune milkshake bien sucré, comme on les aimes",
+      "description": "Un bon  milkshake bien sucré, avec une explosion de saveur chocolaté, idéal en été à servir bien frais.",
       "time": "30",
       "category": "drinks",
-      "difficulty": "Difficile",
-      "note": [
-         {
-            "user" : "1",
-            "note" : "4"
-         },
-         {
-            "user" : "2",
-            "note" : "4"
-         }
-      ],
+      "difficulty": "Facile",
+      "note": [5,4,3,4,4,3,3,4],
       "ingredients" : ["Chocolat", "Lait", "Glace","Banane"]
    },
    {
@@ -159,20 +96,11 @@
        },
       "name": "Milkshake à la banane",
       "picture": "image/recipe/milkshake.png",
-      "description": "Un bon jeune milkshake bien sucré, comme on les aimes mais à la banane",
+      "description": "Ce milkshake revisité à la banane donnera un souffle exotique lors de vos dessert.",
       "time": "60",
       "category": "drinks",
       "difficulty": "Facile",
-      "note": [
-         {
-            "user" : "1",
-            "note" : "3"
-         },
-         {
-            "user" : "2",
-            "note" : "5"
-         }
-      ],
+      "note": [3,4,3,1,1,3,3,4],
       "ingredients" : ["Lait", "Glace","Banane"]
    },
    {
@@ -181,20 +109,11 @@
        },
       "name": "Milkshake à la glace",
       "picture": "image/recipe/milkshake.png",
-      "description": "Encore un bon jeune milkshake bien glacé, incontournable en été avec une pointe de basilic",
+      "description": "Un bon  milkshake bien glacé, incontournable en été avec une pointe de basilic pour rafraichir la boisson",
       "time": "90",
       "category": "drinks",
       "difficulty": "Facile",
-      "note": [
-         {
-            "user" : "1",
-            "note" : "4"
-         },
-         {
-            "user" : "2",
-            "note" : "4"
-         }
-      ],
+      "note": [5,4,3,2,4,3,3,4],
       "ingredients" : ["Lait", "Glace","Basilic"]
    }
    
