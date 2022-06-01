@@ -72,6 +72,9 @@ class _Create_Account_State extends State<Create_Account> {
               content: Text("Votre profil a été créé ${newUser.firstname} !"),
             ), 
           );
+
+          Navigator.of(context).pushNamed("/");
+
         
      }
     } catch (e) {

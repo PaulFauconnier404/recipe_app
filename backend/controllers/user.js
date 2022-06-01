@@ -109,8 +109,8 @@ exports.updateUser = async (req, res, next) => {
   if (req.body.pseudo) {
     user.pseudo = req.body.pseudo
   }
-  if (req.body.favrecipe) {
-    user.favrecipe = req.body.favrecipe
+  if (req.body.favRecipe) {
+    user.favRecipe = req.body.favRecipe
   }
 
 

@@ -79,7 +79,12 @@ class _Develop_Meal_State extends State<Develop_Meal> {
                             recipes[0].description,
                         time: recipes[0].time,
                         difficulty: recipes[0].difficulty,
-                        stars: recipes[0].note as List<dynamic>),
+                        stars: recipes[0].note as List<dynamic>,
+                        
+                        email: userData.email,
+                        recipeId: recipes[0].id as String
+                        
+                    ),
                     //Grille des ingrédients
                     Ingredients_Grid(ingerdients : recipes[0].ingredients as List<dynamic>),
                     //Star notation
@@ -112,8 +117,8 @@ class _Develop_Meal_State extends State<Develop_Meal> {
                                       child: IconButton(
                                          icon: Icon(
                                           _starsUp > 0
-                                          ? Icons.star_border
-                                          : Icons.star
+                                          ? Icons.star
+                                          : Icons.star_border
 
                                           ),
                                         tooltip: '1',
@@ -125,8 +130,8 @@ class _Develop_Meal_State extends State<Develop_Meal> {
                                       child: IconButton(
                                         icon: Icon(
                                           _starsUp > 1
-                                          ? Icons.star_border
-                                          : Icons.star
+                                          ? Icons.star
+                                          : Icons.star_border
 
                                           ),
                                         tooltip: '2',
@@ -138,8 +143,8 @@ class _Develop_Meal_State extends State<Develop_Meal> {
                                       child: IconButton(
                                         icon:  Icon(
                                           _starsUp > 2
-                                          ? Icons.star_border
-                                          : Icons.star
+                                          ? Icons.star
+                                          : Icons.star_border
 
                                           ),
                                         tooltip: '3',
@@ -151,8 +156,8 @@ class _Develop_Meal_State extends State<Develop_Meal> {
                                       child: IconButton(
                                          icon: Icon(
                                           _starsUp > 3
-                                          ? Icons.star_border
-                                          : Icons.star
+                                          ? Icons.star
+                                          : Icons.star_border
 
                                           ),
                                         tooltip: '4',
@@ -164,8 +169,8 @@ class _Develop_Meal_State extends State<Develop_Meal> {
                                       child: IconButton(
                                         icon: Icon(
                                           _starsUp > 4
-                                          ? Icons.star_border
-                                          : Icons.star
+                                          ? Icons.star
+                                          : Icons.star_border
 
                                           ),
                                         tooltip: '5',

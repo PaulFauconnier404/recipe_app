@@ -104,6 +104,30 @@ class UserProvider with ChangeNotifier {
     }
   }
 
+  Future<void> updateUserFav(id, List FavId) async {
+    try {
+      http.Response response = await http.patch(
+        Uri.parse('$host/api/users/'+id),
+        body: json.encode({"favRecipe" : FavId}),
+        headers: {'Content-type': 'application/json'},
+      );
+       if (response.statusCode == 200) {
+         _users = [];
+        _users.add(
+          User.fromJson(
+            json.decode(response.body),
+          ),
+        );
+        notifyListeners();
+
+      }
+    } catch (e) {
+        print(e);
+
+      rethrow;
+    }
+  }
+
   Future<String> logUser(String email, String password) async {
 
     try {

@@ -29,7 +29,7 @@ class _Drink_State extends State<Drink> {
     final DrinkData userData = ModalRoute.of(context)!.settings.arguments as DrinkData;
 
     Provider.of<RecipeProvider>(context).fetchData();
-    List<Recipe> recipes = Provider.of<RecipeProvider>(context).recipes;  
+    List<Recipe> recipeDrink = Provider.of<RecipeProvider>(context).recipes;  
     
     return Scaffold(
       key: _scaffoldKey,
@@ -47,17 +47,17 @@ class _Drink_State extends State<Drink> {
               height: 700,
               child: ListView.builder(
                 itemBuilder: (context, i) {
-                  if(recipes[i].category == 'drinks'){
+                  if(recipeDrink[i].category == 'drinks'){
 
                     return Card_View(
-                      id: recipes[i].id,
-                      title: recipes[i].name as String,
-                      text: recipes[i].description as String,
-                      image: recipes[i].picture as String,
-                      time: recipes[i].time as String,
-                      difficulty: recipes[i].difficulty as String,
-                      stars: recipes[i].note as List<dynamic>,
-                      ingredient: recipes[i].ingredients as List<dynamic>,
+                      id: recipeDrink[i].id,
+                      title: recipeDrink[i].name as String,
+                      text: recipeDrink[i].description as String,
+                      image: recipeDrink[i].picture as String,
+                      time: recipeDrink[i].time as String,
+                      difficulty: recipeDrink[i].difficulty as String,
+                      stars: recipeDrink[i].note as List<dynamic>,
+                      ingredient: recipeDrink[i].ingredients as List<dynamic>,
                       sideP: false as bool,
 
                       email: userData.email,
@@ -69,7 +69,7 @@ class _Drink_State extends State<Drink> {
                   }
                   
                 },
-                itemCount: recipes.length,
+                itemCount: recipeDrink.length,
               ),
             ),
           ],

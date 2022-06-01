@@ -2,6 +2,10 @@ import 'package:recipe_app/layout/all_layout.dart';
 import 'package:flutter/material.dart';
 // import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:recipe_app/model/user_provider.dart';
+import 'package:recipe_app/model/user_model.dart';
+import 'package:provider/provider.dart';
 
 class Recipe_Dev_Title extends StatelessWidget {
   final String title;
@@ -10,16 +14,43 @@ class Recipe_Dev_Title extends StatelessWidget {
   final String difficulty;
   final List<dynamic> stars;
 
+  final String email;
+  final String recipeId;
+
+
   Recipe_Dev_Title({
     required this.title,
     required this.description,
     required this.time,
     required this.difficulty,
     required this.stars,
+    
+    required this.email,
+    required this.recipeId,
   });
+
+
+  bool _liked = false;
 
   @override
   Widget build(BuildContext context) {
+    Provider.of<UserProvider>(context).selectByEmail(email);
+    List<User> users = Provider.of<UserProvider>(context).users;
+
+    void addFav() async{
+      _liked = true;
+
+      List<dynamic> favRecipe = users[0].favrecipe as List<dynamic>;
+      favRecipe.add(recipeId);
+      print('cc');
+       await Provider.of<UserProvider>(
+            context,
+            listen: false,
+          ).updateUserFav(users[0].id, favRecipe);
+
+
+    }
+
     return Container(
         width: 350,
         child: Column(
@@ -48,9 +79,15 @@ class Recipe_Dev_Title extends StatelessWidget {
                 Padding(
                   padding: EdgeInsets.only(right: 20),
                   child: IconButton(
-                    icon: const Icon(Icons.favorite_border),
+                    icon: Icon(
+                      _liked == true
+                        ? Icons.favorite
+                        : Icons.favorite_border
+                    ),
                     tooltip: 'Add to favorites',
-                    onPressed: () {},
+                    onPressed: () {
+                      addFav();
+                    },
                   ),
                 )
               ],
