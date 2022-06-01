@@ -8,7 +8,7 @@ class Recipe_Dev_Title extends StatelessWidget {
   final String description;
   final String time;
   final String difficulty;
-  final String stars;
+  final List<dynamic> stars;
 
   Recipe_Dev_Title({
     required this.title,
@@ -42,7 +42,7 @@ class Recipe_Dev_Title extends StatelessWidget {
                       ),
                     ),
                     Details_Value_Meal(
-                        time: time, difficulty: difficulty, stars: stars)
+                        time: time, difficulty: difficulty, stars: '2.5')
                   ],
                 ),
                 Padding(

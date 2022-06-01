@@ -71,7 +71,7 @@ class _Login_State extends State<Login> {
             children: [
               Container(
                 width: 300,
-                padding: const EdgeInsets.only(top: 30),
+                padding: const EdgeInsets.only(top: 0),
                 child: TextFormField(
                   validator: (email) =>
                               email != null && !EmailValidator.validate(email)

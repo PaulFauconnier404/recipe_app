@@ -1,15 +1,16 @@
 const Recipe = require('../models/recipe');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const ObjectId = require('mongodb').ObjectId; 
 
 
 
 exports.getOneRecipe = (req, res, next) => {
-  Recipe.findOne({
-      _id: req.params.id
-  }).then(
-    () => {
-      res.status(200).json(recipe);
+  const id = new ObjectId(req.params.id);
+
+  Recipe.findOne({id : id}).then(
+    (users) => {
+      res.status(200).json(users);
     }
   ).catch(
     (error) => {
@@ -18,6 +19,8 @@ exports.getOneRecipe = (req, res, next) => {
       });
     }
   );
+
+  
 };
 
 exports.getAllRecipe = (req, res, next) => {
