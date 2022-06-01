@@ -23,7 +23,8 @@
       "time": "20",
       "category": "sugar",
       "difficulty": "Facile",
-      "note": [ 2, 3, 5],
+      "note": [ 2, 4, 5],
+
       "ingredients" : ["Chocolat", "Farine", "Levure","Glace"]
    },
    {

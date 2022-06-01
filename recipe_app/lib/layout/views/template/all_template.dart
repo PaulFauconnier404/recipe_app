@@ -12,7 +12,6 @@ export 'package:recipe_app/layout/views/template/general/top_bar.dart';
 
 export 'package:recipe_app/layout/views/template/recipe/card_view.dart';
 export 'package:recipe_app/layout/views/template/recipe/ingredients_grid.dart';
-export 'package:recipe_app/layout/views/template/recipe/stars_container.dart';
 export 'package:recipe_app/layout/views/template/recipe/top_view_dev_recipe.dart';
 export 'package:recipe_app/layout/views/template/recipe/details_value_meal.dart';
 export 'package:recipe_app/layout/views/template/recipe/recipe_dev_title.dart';

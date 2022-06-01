@@ -21,7 +21,7 @@ class Develop_Meal extends StatefulWidget {
 class _Develop_Meal_State extends State<Develop_Meal> {
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
   bool view = true;
-  bool _starsUp = false;
+  int _starsUp = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -35,6 +35,7 @@ class _Develop_Meal_State extends State<Develop_Meal> {
     List<dynamic> note = recipes[0].note;
 
     void addNote(noteToAdd) async{
+      _starsUp = noteToAdd;
       note.add(noteToAdd);
       await Provider.of<RecipeProvider>(
             context,
@@ -109,7 +110,12 @@ class _Develop_Meal_State extends State<Develop_Meal> {
                                     Padding(
                                       padding: EdgeInsets.all(10),
                                       child: IconButton(
-                                        icon: const Icon(Icons.star_border),
+                                         icon: Icon(
+                                          _starsUp > 0
+                                          ? Icons.star_border
+                                          : Icons.star
+
+                                          ),
                                         tooltip: '1',
                                         onPressed: () {addNote(1);},
                                       ),
@@ -117,7 +123,12 @@ class _Develop_Meal_State extends State<Develop_Meal> {
                                     Padding(
                                       padding: EdgeInsets.all(10),
                                       child: IconButton(
-                                        icon: const Icon(Icons.star_border),
+                                        icon: Icon(
+                                          _starsUp > 1
+                                          ? Icons.star_border
+                                          : Icons.star
+
+                                          ),
                                         tooltip: '2',
                                         onPressed: () {addNote(2);},
                                       ),
@@ -125,7 +136,12 @@ class _Develop_Meal_State extends State<Develop_Meal> {
                                     Padding(
                                       padding: EdgeInsets.all(10),
                                       child: IconButton(
-                                        icon: const Icon(Icons.star_border),
+                                        icon:  Icon(
+                                          _starsUp > 2
+                                          ? Icons.star_border
+                                          : Icons.star
+
+                                          ),
                                         tooltip: '3',
                                         onPressed: () {addNote(3);},
                                       ),
@@ -133,7 +149,12 @@ class _Develop_Meal_State extends State<Develop_Meal> {
                                     Padding(
                                       padding: EdgeInsets.all(10),
                                       child: IconButton(
-                                        icon: const Icon(Icons.star_border),
+                                         icon: Icon(
+                                          _starsUp > 3
+                                          ? Icons.star_border
+                                          : Icons.star
+
+                                          ),
                                         tooltip: '4',
                                         onPressed: () {addNote(4);},
                                       ),
@@ -142,7 +163,7 @@ class _Develop_Meal_State extends State<Develop_Meal> {
                                       padding: EdgeInsets.all(10),
                                       child: IconButton(
                                         icon: Icon(
-                                          _starsUp
+                                          _starsUp > 4
                                           ? Icons.star_border
                                           : Icons.star
 
@@ -151,9 +172,7 @@ class _Develop_Meal_State extends State<Develop_Meal> {
                                         onPressed: () {
                                           addNote(5);
 
-                                          setState(() {
-                                          _starsUp = !_starsUp;
-                                          });
+                                        
                                         },
                                       ),
                                     ),
