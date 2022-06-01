@@ -2,6 +2,9 @@ import 'package:recipe_app/layout/all_layout.dart';
 import 'package:flutter/material.dart';
 // import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:recipe_app/model/recipe_provider.dart';
+import 'package:recipe_app/model/recipe_model.dart';
+import 'package:provider/provider.dart';
 
 class Develop_Meal extends StatefulWidget {
   static String routeName = '/develop-meal';
@@ -21,7 +24,11 @@ class _Develop_Meal_State extends State<Develop_Meal> {
   @override
   Widget build(BuildContext context) {
     final MealData userData = ModalRoute.of(context)!.settings.arguments as MealData;
-  print(userData.id +' ----- '+ userData.email);
+
+    Provider.of<RecipeProvider>(context).selectOne(userData.id);
+    List<Recipe> recipes = Provider.of<RecipeProvider>(context).recipes;
+
+
     return Scaffold(
       key: _scaffoldKey,
       drawer: Drawer_Implement(email: userData.email,),
@@ -49,17 +56,17 @@ class _Develop_Meal_State extends State<Develop_Meal> {
                 child: Column(
                   children: [
                     //En-tete de la card
-                    Top_View_Dev_Recipe(url: 'image/recipe/pizza.png'),
+                    Top_View_Dev_Recipe(url: recipes[0].picture),
                     //Développement de la recette
                     Recipe_Dev_Title(
-                        title: "Pizza au champignons",
+                        title: recipes[0].name,
                         description:
-                            "Le lorem ipsum est, en imprimerie, une suite de mots sans signification utilisée à titre provisoire pour calibrer une mise Le lorem ipsum est, en imprimerie, une suite de mots sans signification utilisée à titre provisoire pour calibrer une mise   ",
-                        time: "10min",
-                        difficulty: "Modéré",
-                        stars: "4.2/5"),
+                            recipes[0].description,
+                        time: recipes[0].time,
+                        difficulty: recipes[0].difficulty,
+                        stars: recipes[0].note as List<dynamic>),
                     //Grille des ingrédients
-                    Ingredients_Grid(),
+                    Ingredients_Grid(ingerdients : recipes[0].ingredients as List<dynamic>),
                     //Star notation
                     Stars_Container()
                   ],
