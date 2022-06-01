@@ -3,20 +3,20 @@ class User {
   String name;
   String firstname;
   String pseudo;
-  String picture;
+  String birthdate;
   String email;
   String password;
-  List favRecipe;
+  List<dynamic>? favrecipe;
 
   User({
     this.id,
     required this.name,
     required this.firstname,
     required this.pseudo,
-    required this.picture,
+    required this.birthdate,
     required this.email,
     required this.password,
-    required this.favRecipe,
+    this.favrecipe,
   });
 
   User.fromJson(Map<String, dynamic> json)
@@ -24,10 +24,10 @@ class User {
         name = json['name'],
         firstname = json['firstname'],
         pseudo = json['pseudo'],
-        picture = json['picture'],
+        birthdate = json['birthdate'],
         email = json['email'],
         password = json['password'],
-        favRecipe = json['favRecipe'];
+        favrecipe = json['favRecipe'];
 
   Map<String, dynamic> toJson() {
     if (id != null) {
@@ -36,20 +36,22 @@ class User {
         'name': name,
         'firstname': firstname,
         'pseudo': pseudo,
-        'picture': picture,
+        'birthdate' : birthdate,
         'email': email,
         'password': password,
-        'favRecipe': favRecipe,
+        'favrecipe': favrecipe,
       };
     } else {
       return {
+        'name': name,
+        'firstname': firstname,
+        'pseudo': pseudo,
+        'birthdate' : birthdate,
         'email': email,
         'password': password,
+        'favrecipe': favrecipe,
       };
     }
   }
 
-  String showUser() {
-    return "$email\n$password\n\n";
-  }
 }

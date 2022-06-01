@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:recipe_app/layout/all_layout.dart';
 // import 'package:flutter_svg/flutter_svg.dart';
 // import 'package:google_fonts/google_fonts.dart';
 
 class Top_Bar extends StatelessWidget {
   final GlobalKey<ScaffoldState> scaffoldKey;
+  String email;
 
     Top_Bar({
       required this.scaffoldKey,
+      required this.email,
     });
 
   @override
@@ -68,7 +71,9 @@ class Top_Bar extends StatelessWidget {
     final choix = await Navigator.pushNamed(
       context,
       '/update-account',
-     
+      arguments: UpdateData(
+        email: email as String,
+      ),
     );
     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
       content: Text("$choix"),

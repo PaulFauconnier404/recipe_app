@@ -1,6 +1,6 @@
 import 'package:recipe_app/layout/all_layout.dart';
 import 'package:flutter/material.dart';
-import 'dart:core';
+import 'package:email_validator/email_validator.dart';
 
 // import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -9,6 +9,7 @@ import 'package:provider/provider.dart';
 import 'package:recipe_app/model/user_model.dart';
 import 'package:recipe_app/model/user_provider.dart';
 
+import 'package:intl/intl.dart';
 
 class Create_Account extends StatefulWidget {
   static String routeName = '/create-account';
@@ -29,15 +30,16 @@ class _Create_Account_State extends State<Create_Account> {
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
   
+
   late User newUser;
 
   String? name;
   String? firstname;
   String? pseudo;
-  String? picture;
   String? email;
   String? password;
-  List? favRecipe = [];
+  List? favrecipe = [];
+  DateTime? birthdate;
     
   @override
   void initState() {
@@ -45,10 +47,10 @@ class _Create_Account_State extends State<Create_Account> {
       name: " ",
       firstname: " ",
       pseudo: " ",
-      picture: "TEST ",
+      birthdate : '',
       email: " ",
       password: " ",
-      favRecipe : ["test", "z"]
+      favrecipe : []
     );
     super.initState();
   }
@@ -67,7 +69,7 @@ class _Create_Account_State extends State<Create_Account> {
 
           ..showSnackBar(
             SnackBar(
-              content: Text("Le profile de ${newUser.firstname} !"),
+              content: Text("Votre profil a été créé ${newUser.firstname} !"),
             ), 
           );
         
@@ -77,8 +79,26 @@ class _Create_Account_State extends State<Create_Account> {
     }
   }
 
+  void setDate() {
+    showDatePicker(
+      context: context,
+      firstDate: DateTime(1900),
+      initialDate: DateTime(1990),
+      lastDate: DateTime.now(),
+    ).then((pickDate) {
+    if (pickDate != null) {
+        setState(() {
+          newUser.birthdate = DateFormat("yyyy-MM-dd hh:mm:ss").format(pickDate);
+          birthdate = pickDate;
+          print(newUser.birthdate);
+
+        });
+    } });
+  }
+
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(      
           body: Container(
             decoration: BoxDecoration(
@@ -87,7 +107,7 @@ class _Create_Account_State extends State<Create_Account> {
             child: Column(
                 children: [
                   
-                  Top_Bar(scaffoldKey : _scaffoldKey),
+                  SizedBox(height: 100,),
                   Second_App_Title(text1:"Créer un ", text2:"compte"),
                   Form(
                     key: formKey,
@@ -165,7 +185,10 @@ class _Create_Account_State extends State<Create_Account> {
                           child: TextFormField(
 
                             onSaved: (value) => newUser.email = value!,
-
+                            validator: (email) =>
+                              email != null && !EmailValidator.validate(email)
+                                  ? 'Saisissez un email valide'
+                                  : null,
                             decoration: InputDecoration(
                               enabledBorder: const UnderlineInputBorder(      
                                 borderSide: BorderSide(color: Color(0xFF909090)),   
@@ -181,7 +204,21 @@ class _Create_Account_State extends State<Create_Account> {
                             ),
                           ),
                         ),
-                        // Input_File(text: "Ajouter une photo"),
+
+                        Container(
+                          width: 300,
+                          padding: const EdgeInsets.only(top: 30),
+                          child: ElevatedButton(
+                            child: Text((birthdate == null)
+                                ? "Pick a date"
+                                : DateFormat('dd/MM/yyyy').format(birthdate!)),
+                            onPressed: setDate,
+                          ),
+
+                        ),
+
+
+                        
                         Container(
                           width: 300,
                           padding: const EdgeInsets.only(top: 30),
@@ -205,13 +242,11 @@ class _Create_Account_State extends State<Create_Account> {
                           ),
                         ),
                       
-                        // submit_data(text: "Créer mon compte"),
                         Container(
                           padding: EdgeInsets.only(top: 30),
                           child: ElevatedButton(
                             child: Text(
                               'Créer mon compte',
-                              textDirection: TextDirection.ltr,
                               style: GoogleFonts.montserrat(
                                 color: Color(0xFF4202020),
                                 decoration: TextDecoration.none,
@@ -237,3 +272,4 @@ class _Create_Account_State extends State<Create_Account> {
         );
   }
 }
+

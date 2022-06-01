@@ -1,10 +1,13 @@
 [
    {
-      "_id": 1,
-      "name": "Gâteau au test",
-      "picture": "/data",
-      "description": "Lorem",
+      "_id":  {
+         "$oid": "62969ef348ffc0729ea96d07"
+       },
+      "name": "Gâteau au chocolat",
+      "picture": "image/recipe/cake.png",
+      "description": "Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise",
       "time": "20",
+      "category": "sugar",
       "difficulty": "Facile",
       "note": [
          {
@@ -19,12 +22,15 @@
       "ingredients" : ["Chocolat", "Farine", "Levure"]
    },
    {
-      "_id": 2,
-      "name": "Gâteau à la fraise",
-      "picture": "/data",
-      "description": "Lorem",
-      "time": "20",
-      "difficulty": "Facile",
+      "_id":  {
+         "$oid": "62969ef648ffc0729ea96d07"
+       },
+      "name": "Pizza au chocolat",
+      "picture": "image/recipe/pizza.png",
+      "description": "Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise",
+      "time": "90",
+      "category": "salt",
+      "difficulty": "Difficile",
       "note": [
          {
             "user" : "1",
@@ -35,8 +41,7 @@
             "note" : "2"
          }
       ],
-      "ingredients" : ["fraise", "Farine", "Levure"]
+      "ingredients" : ["Chocolat", "Farine", "Levure"]
    }
-   
    
 ]
