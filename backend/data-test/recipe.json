@@ -40,6 +40,32 @@
    },
    {
       "_id":  {
+         "$oid": "62969ef458afc0529ea96d07"
+       },
+      "name": "Trianon framboise",
+      "picture": "image/recipe/cake4.png",
+      "description": "Onctueux trianon avec un lit de framboise et de délicieuse confiture aux fraises.",
+      "time": "45",
+      "category": "sugar",
+      "difficulty": "Modéré",
+      "note": [5,5,3,5,4,5,5,2,3,3,5],
+      "ingredients" : ["Chocolat", "Farine", "Levure","Fraise","Framboise","Confiture","Beurre"]
+   },
+   {
+      "_id":  {
+         "$oid": "62969ef459afc1529ea96d07"
+       },
+      "name": "Tarte aux pommes",
+      "picture": "image/recipe/cake5.png",
+      "description": "Une tarte traditionnelle aux pommes bio, accompagné de sa délicieuse pate à tarte. Une recette incontournable !",
+      "time": "36",
+      "category": "sugar",
+      "difficulty": "Facile",
+      "note": [1,1,5,5,4,5,5,2,4,3,5,1,1],
+      "ingredients" : ["Pomme", "Pate", "Sucre","Beurre","Farine"]
+   },
+   {
+      "_id":  {
          "$oid": "62969ef648ffc0729ea96d07"
        },
       "name": "Pizza au chocolat",
@@ -77,6 +103,31 @@
       "note": [5,4,3,4,1,5,2,4,3,3,4],
       "ingredients" : ["Levure", "Farine", "Banane", "Sucre","Basilic","Champignon","Mozza","Oeuf","Tomate","Chocolat"]
    },
+   "_id":  {
+      "$oid": "62969ef548eec0729ea96d07"
+    },
+   "name": "Pates carbonara",
+   "picture": "image/recipe/patescarbo.png",
+   "description": "Ce plat phare Italien est toujours une réussite. Avec sa sauce savoureuse accompagné d'une pointe fraiche de basilic",
+   "time": "20",
+   "category": "salt",
+   "difficulty": "Modéré",
+   "note": [3,4,5,2,3,3,3,3,4,4,4,5],
+   "ingredients" : ["Pates", "Lardons", "Oeuf", "Creme"]
+},
+    "_id":  {
+       "$oid": "62969ef547eec0729ea96d07"
+     },
+    "name": "Croque Monsieur",
+    "picture": "image/recipe/croquemonsieur.png",
+    "description": "Idéal pour bien manger rapidement, le croque monsieur est savoureux avec son fromage fondant, un oeuf au plat et son jambon généreux.",
+    "time": "20",
+    "category": "salt",
+    "difficulty": "Facile",
+    "note": [3,4,3,3,3,3,3,3,3,4,4,4,5],
+    "ingredients" : ["Pain", "Jambon", "Oeuf", "Fromage"]
+    },
+
    {
       "_id":  {
          "$oid": "62969ef648fac0729ea96d07"
