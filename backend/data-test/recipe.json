@@ -21,7 +21,7 @@
       "description": "Le gâteau au fromage iconique des USA revisité, un régal pour les plus gourmands d'entre nous.",
       "time": "70",
       "category": "sugar",
-      "difficulty": "Facile",
+      "difficulty": "Modéré",
       "note": [2,2,3,4,5,4,5,2,1,4,5],
       "ingredients" : ["Chocolat", "Farine", "Levure","Glace","Beurre"]
    },
@@ -32,9 +32,9 @@
       "name": "Gateau coulis chocolat",
       "picture": "image/recipe/cake3.png",
       "description": "Avec sa base à la banane et à la glace et le coulis au chocolat est un chef d'oeuvre.",
-      "time": "20",
+      "time": "25",
       "category": "sugar",
-      "difficulty": "Facile",
+      "difficulty": "Difficile",
       "note": [2,1,3,4,4,4,5,2,3,3,5],
       "ingredients" : ["Chocolat", "Farine", "Levure","Banane","Glace","Lait","Beurre"]
    },
@@ -71,7 +71,7 @@
       "name": "Pizza au choix",
       "picture": "image/recipe/pizza3.png",
       "description": "Un mélange où chacun trouvera sa part favorite. Idéal lors d'un repas entre amis.",
-      "time": "40",
+      "time": "55",
       "category": "salt",
       "difficulty": "Modéré",
       "note": [5,4,3,4,1,5,2,4,3,3,4],
@@ -95,7 +95,7 @@
          "$oid": "62969ef647fab0729ea96d07"
        },
       "name": "Milkshake à la banane",
-      "picture": "image/recipe/milkshake2.png",
+      "picture": "image/recipe/milkshake.png",
       "description": "Ce milkshake revisité à la banane donnera un souffle exotique lors de vos dessert.",
       "time": "60",
       "category": "drinks",
@@ -108,12 +108,13 @@
          "$oid": "52965ef648fac0729ba96d07"
        },
       "name": "Milkshake à la glace",
-      "picture": "image/recipe/milkshake3.png",
+      "picture": "image/recipe/milkshake.png",
       "description": "Un bon  milkshake bien glacé, incontournable en été avec une pointe de basilic pour rafraichir la boisson",
       "time": "90",
       "category": "drinks",
-      "difficulty": "Facile",
-      "note": [5,4,3,2,4,3,3,4],
+      "difficulty": "Modéré",
+      "note": [5,4,3,2,4,2,3,4],
       "ingredients" : ["Lait", "Glace","Basilic"]
    }
+   
 ]
