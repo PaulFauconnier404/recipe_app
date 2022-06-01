@@ -92,7 +92,7 @@
          "$oid": "62969ff647ffc0729ea96d07"
        },
       "name": "Pizza à la mozzarella",
-      "picture": "image/recipe/pizza.png",
+      "picture": "image/recipe/pizza2.png",
       "description": "Le classique Italien",
       "time": "90",
       "category": "salt",
@@ -114,7 +114,7 @@
          "$oid": "62969ff647ffb0729ea96d07"
        },
       "name": "Pizza à la banane",
-      "picture": "image/recipe/pizza.png",
+      "picture": "image/recipe/pizza3.png",
       "description": "C'est bizarre mais on s'y fait",
       "time": "90",
       "category": "salt",
